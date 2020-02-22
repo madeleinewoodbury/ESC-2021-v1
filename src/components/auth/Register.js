@@ -35,7 +35,7 @@ const Register = ({ register, isAuthenticated }) => {
     <Fragment>
       <div className="auth background">
         <div className="banner"></div>
-        <div className="content">
+        <div className="content content-bg">
           <div className="overlay">
             <div className="auth-container">
               <h1 className="large">Sign Up</h1>

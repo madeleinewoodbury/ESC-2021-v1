@@ -8,9 +8,15 @@ import setAuthToken from './utils/setAuthToken';
 // Components
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
+import Dashboard from './components/dashboard/Dashboard';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
+import Participants from './components/participants/Participants';
+import Countries from './components/countries/Countries';
+import ParticipantPostcard from './components/participants/ParticipantPostcard';
+import CountryPostcard from './components/countries/CountryPostcard';
+import EditCountries from './components/admin/EditCountries';
 import './App.css';
 
 if (localStorage.token) {
@@ -28,14 +34,21 @@ const App = () => {
         <Fragment>
           <Navbar />
           <Route exact path="/" component={Landing} />
-          <div className="container">
-            <Alert />
-
-            <Switch>
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-            </Switch>
-          </div>
+          <Alert />
+          <Switch>
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/participants" component={Participants} />
+            <Route exact path="/countries" component={Countries} />
+            <Route
+              exact
+              path="/participants/:id"
+              component={ParticipantPostcard}
+            />
+            <Route exact path="/countries/:id" component={CountryPostcard} />
+            <Route exact path="/edit-countries" component={EditCountries} />
+          </Switch>
         </Fragment>
       </Router>
     </Provider>

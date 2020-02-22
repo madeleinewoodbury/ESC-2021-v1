@@ -41,14 +41,23 @@ li {
 }
 
 .background .banner {
-  background: url('./esc-background.png') no-repeat center center/cover;
+  background: url('./img/esc-background-2.png') no-repeat center center/cover;
   width: 30%;
 }
 
 .background .content {
-  background: url('./esc-stage-background.jpg') no-repeat center center/cover;
+  background: var(--light-color);
   width: 70%;
   position: relative;
+}
+
+.background .content.content-bg {
+  background: url('./esc-stage-background.jpg') no-repeat center center/cover;
+}
+
+.content-container {
+  width: 80%;
+  margin: 2rem auto;
 }
 
 .overlay {
@@ -93,6 +102,10 @@ li {
 
 .text-secondary {
   color: var(--secondary-color);
+}
+
+.text-white {
+  color: #fff;
 }
 
 /* Padding */
@@ -147,6 +160,10 @@ li {
   margin: 3rem 0;
 }
 
+.btn-container {
+  display: flex;
+}
+
 .btn {
   display: inline-block;
   background: var(--light-color);
@@ -176,6 +193,11 @@ li {
   color: #fff;
 }
 
+.btn-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+
 .btn-primary:hover {
   background: var(--secondary-color);
   color: #fff;
@@ -184,6 +206,10 @@ li {
 .btn-secondary:hover {
   background: var(--dark-color);
   color: var(--secondary-color);
+}
+
+.btn-dark:hover {
+  opacity: 0.8;
 }
 
 .alert {
@@ -288,6 +314,36 @@ li {
 
 /* Landing */
 
+/* Dashboard */
+
+/* Edit */
+.edit-countries .countries-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.edit-countries .countries-list .country-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.edit-countries .countries-list .country-item:nth-of-type(even) {
+  background-color: rgb(219, 219, 219);
+}
+
+.edit-countries .countries-list .country-item .country-info {
+  display: flex;
+}
+
+.edit-countries .countries-list .country-item .country-info img {
+  width: 50px;
+  margin-right: 1rem;
+}
+
 /* Forms */
 .form .form-group {
   margin: 1.2rem 0;
@@ -325,4 +381,229 @@ button {
   color: var(--light-color);
   width: 60%;
   margin-top: 2rem;
+}
+
+/* Participants / Countries */
+.participants,
+.countries {
+  position: relative;
+  top: 10vh;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.participants .banner,
+.countries .banner {
+  background: url('./img/esc-background-2.png') no-repeat center center/cover;
+  width: 25%;
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0px;
+  width: 75%;
+  margin-left: 25%;
+}
+
+.countries .card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.participants .card {
+  width: 25%;
+}
+
+.countries .card {
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+}
+
+.card .card-img img {
+  width: 100%;
+}
+
+.card .card-content {
+  position: relative;
+  padding: 2rem;
+}
+
+.countries .card .card-content {
+  padding: 0;
+}
+
+.card .card-content .card-pill {
+  position: absolute;
+  top: -15px;
+}
+
+.card .card-content .card-pill a {
+  background-color: #fff;
+  color: black;
+  padding: 5px 20px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.card .card-content .card-pill a:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.card .card-content .card-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.card .card-content .card-info a {
+  font-size: 1.5em;
+  color: black;
+  margin: 0.5rem 0;
+}
+
+.card .card-content .card-info a:hover {
+  color: #32a9d1;
+}
+
+.card .card-content .card-info span {
+  font-size: 0.9rem;
+}
+
+/* Postcard */
+.postcard-container {
+  position: relative;
+  top: 10vh;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.postcard-container .banner {
+  background: url('./img/esc-background-2.png') no-repeat center center/cover;
+  width: 25%;
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.postcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  margin-left: 25%;
+  height: 100vh;
+}
+
+.postcard .postcard-top {
+  display: flex;
+  width: 100%;
+}
+
+.postcard .postcard-top .postcard-hero {
+  width: 70%;
+  position: relative;
+}
+
+.postcard .postcard-top .postcard-hero .postcard-img {
+  width: 100%;
+}
+
+.postcard .postcard-top .postcard-hero .postcard-flag {
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  z-index: 10;
+  width: 200px;
+}
+
+.postcard .postcard-top .postcard-hero .postcard-title {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 2px;
+  left: 0;
+  padding: 1rem 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100px;
+}
+
+.postcard .postcard-top .postcard-hero .postcard-title h2 {
+  margin: 0 200px 10px 0;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.postcard .postcard-top .postcard-info {
+  width: 30%;
+  background-color: #ededf0;
+  padding: 1rem 1.5rem;
+}
+
+.postcard .postcard-top .postcard-info .postcard-list span {
+  display: block;
+}
+
+.postcard .postcard-top .postcard-info div {
+  margin-bottom: 1rem;
+}
+
+.postcard .postcard-top .postcard-info div h3 {
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+
+.postcard .postcard-content {
+  width: 80%;
+  margin-top: -2px auto 0 auto;
+}
+
+.postcard .postcard-content .postcard-bio {
+  color: black;
+}
+
+.postcard .postcard-content .postcard-bio .intro {
+  font-weight: bold;
+}
+
+.postcard .postcard-content .postcard-bio p {
+  font-size: 1.3rem;
+  line-height: 1.4;
+  margin: 1rem;
+}
+
+.postcard .postcard-content .postcard-video {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 5rem 0;
+  grid-area: video;
+  width: 100%;
+}
+
+.postcard .postcard-content iframe {
+  width: 700px;
+  height: 400px;
 }

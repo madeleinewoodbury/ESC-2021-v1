@@ -50,10 +50,10 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
               </Link>
             </li>
             <li>
-              <Link to="#">Participants</Link>
+              <Link to="/participants">Participants</Link>
             </li>
             <li>
-              <Link to="#">Countries</Link>
+              <Link to="/countries">Countries</Link>
             </li>
             <li>
               <Link to="#">History</Link>
