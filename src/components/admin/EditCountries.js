@@ -18,7 +18,7 @@ const EditCountries = ({ auth: { user, isAuthenticated, loading } }) => {
         <div className="content-container">
           <h1>Edit Countries</h1>
           <div className="btn-container">
-            <Link to="#" className="btn btn-primary">
+            <Link to="/add-country" className="btn btn-primary">
               Add Country
             </Link>
           </div>
