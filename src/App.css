@@ -186,6 +186,45 @@ li {
   color: var(--secondary-color);
 }
 
+.alert {
+  position: absolute;
+  top: 10vh;
+  left: 30%;
+  z-index: 200;
+  width: 70%;
+  display: flex;
+  padding: 0.8rem;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
+
+.alert-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.alert-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+
+.alert-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+.alert-success {
+  background: var(--success-color);
+  color: #fff;
+}
+
+.alert-white {
+  background: #fff;
+  color: #333;
+  border: #ccc solid 1px;
+}
+
 /* Navbar */
 .navbar-behind {
   position: fixed;
@@ -232,6 +271,11 @@ li {
   margin: 0 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.navbar .nav-links li a i {
+  margin-right: 0.4rem;
 }
 
 .navbar .nav-links li a:hover {

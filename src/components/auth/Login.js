@@ -1,7 +1,29 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({ login, isAuthenticated }) => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    login(email, password);
+  };
+
+  const { email, password } = formData;
+
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <Fragment>
       <div className="auth background">
@@ -13,14 +35,14 @@ const Login = () => {
               <p className="lead">
                 <i className="fas fa-user"></i> Sign in to Your Account
               </p>
-              <form className="form">
+              <form className="form" onSubmit={e => handleSubmit(e)}>
                 <div className="form-group">
                   <input
                     type="email"
                     placeholder="Email Address"
                     name="email"
-                    // value={email}
-                    // onChange={e => handleChange(e)}
+                    value={email}
+                    onChange={e => handleChange(e)}
                   />
                 </div>
                 <div className="form-group">
@@ -28,9 +50,9 @@ const Login = () => {
                     type="password"
                     placeholder="Password"
                     name="password"
-                    // value={password}
-                    // onChange={e => handleChange(e)}
-                    // minLength={6}
+                    value={password}
+                    onChange={e => handleChange(e)}
+                    minLength={6}
                   />
                 </div>
                 <input
@@ -53,4 +75,13 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(Login);
