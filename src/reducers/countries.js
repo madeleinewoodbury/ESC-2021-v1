@@ -2,7 +2,8 @@ import {
   GET_COUNTRY,
   GET_COUNTRIES,
   COUNTRY_ERROR,
-  CLEAR_COUNTRY
+  CLEAR_COUNTRY,
+  REMOVE_COUNTRY
 } from '../actions/types';
 
 const initialState = {
@@ -28,6 +29,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case CLEAR_COUNTRY:
+    case REMOVE_COUNTRY:
       return {
         ...state,
         countries: [],

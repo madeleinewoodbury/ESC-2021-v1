@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
+import { getCountries } from '../../actions/countries';
+import CountryItem from './CountryItem';
 
-const EditCountries = ({ auth: { user, isAuthenticated, loading } }) => {
+const EditCountries = ({
+  auth: { user, isAuthenticated },
+  getCountries,
+  countries: { countries, loading },
+  history
+}) => {
+  useEffect(() => {
+    getCountries();
+  }, [getCountries]);
+
   if (isAuthenticated && user.role !== 'admin') {
     return <Redirect to="/dashboard" />;
   }
 
-  return loading && user === null ? (
+  return loading && countries === null ? (
     <Spinner />
   ) : (
-    <div className="edit-countries relative background">
+    <div className="edit-countries relative background my-3">
       <div className="banner"></div>
       <div className="content-container">
         <h1>Edit Countries</h1>
@@ -22,40 +33,15 @@ const EditCountries = ({ auth: { user, isAuthenticated, loading } }) => {
           </Link>
         </div>
         <div className="countries-list">
-          <div className="country-item">
-            <div className="country-info">
-              <img
-                src="https://eurovision.tv/image/8d938a00-42af-4b60-835f-415a224a66cd.svg"
-                alt="Albania"
-              />
-              <h2>Albania</h2>
-            </div>
-            <div className="country-action">
-              <Link to="#" className="btn btn-danger">
-                Delete
-              </Link>
-              <Link to="#" className="btn btn-secondary">
-                Edit
-              </Link>
-            </div>
-          </div>
-          <div className="country-item">
-            <div className="country-info">
-              <img
-                src="https://eurovision.tv/image/8d93896f-fd4c-4afe-bd6e-9caaab1fde55.svg"
-                alt="Armenia"
-              />
-              <h2>Armenia</h2>
-            </div>
-            <div className="country-action">
-              <Link to="#" className="btn btn-danger">
-                Delete
-              </Link>
-              <Link to="#" className="btn btn-secondary">
-                Edit
-              </Link>
-            </div>
-          </div>
+          {countries.map(country => (
+            <CountryItem
+              key={country.id}
+              name={country.name}
+              flag={country.flag}
+              id={country._id}
+              history={history}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -63,11 +49,14 @@ const EditCountries = ({ auth: { user, isAuthenticated, loading } }) => {
 };
 
 EditCountries.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  getCountries: PropTypes.func.isRequired,
+  countries: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  countries: state.countries
 });
 
-export default connect(mapStateToProps, {})(EditCountries);
+export default connect(mapStateToProps, { getCountries })(EditCountries);

@@ -23,6 +23,7 @@ const Countries = ({ getCountries, countries: { countries, loading } }) => {
                 key={country._id}
                 country={country.name}
                 flag={country.flag}
+                id={country._id}
               />
             ))}
           </div>

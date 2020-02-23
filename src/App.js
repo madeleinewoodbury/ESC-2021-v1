@@ -19,6 +19,7 @@ import ParticipantPostcard from './components/participants/ParticipantPostcard';
 import CountryPostcard from './components/countries/CountryPostcard';
 import EditCountries from './components/admin/EditCountries';
 import AddCountry from './components/admin/AddCountry';
+import EditCountry from './components/admin/EditCountry';
 import './App.css';
 
 if (localStorage.token) {
@@ -55,6 +56,11 @@ const App = () => {
               component={EditCountries}
             />
             <PrivateRoute exact path="/add-country" component={AddCountry} />
+            <PrivateRoute
+              exact
+              path="/edit-country/:id"
+              component={EditCountry}
+            />
           </Switch>
         </Fragment>
       </Router>

@@ -2,7 +2,8 @@ import {
   GET_COUNTRY,
   GET_COUNTRIES,
   COUNTRY_ERROR,
-  CLEAR_COUNTRY
+  CLEAR_COUNTRY,
+  REMOVE_COUNTRY
 } from './types';
 import axios from 'axios';
 import { setAlert } from './alert';
@@ -16,6 +17,22 @@ export const getCountries = () => async dispatch => {
     const res = await axios.get('/api/countries');
     dispatch({
       type: GET_COUNTRIES,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: COUNTRY_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Get country by id
+export const getCountry = id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/countries/${id}`);
+    dispatch({
+      type: GET_COUNTRY,
       payload: res.data
     });
   } catch (err) {
@@ -52,5 +69,58 @@ export const addCountry = (formData, history) => async dispatch => {
       type: COUNTRY_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
+  }
+};
+
+// Update a country
+export const updateCountry = (id, formData, history) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const res = await axios.put(`/api/countries/${id}`, formData, config);
+
+    dispatch({
+      type: GET_COUNTRY,
+      payload: res.data
+    });
+    dispatch(setAlert('Country Updated', 'success'));
+
+    // Redirect back to dashboard
+    history.push(`/dashboard`);
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: COUNTRY_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Delete country
+export const deleteCountry = (id, history) => async dispatch => {
+  if (window.confirm('Are you sure? This can NOT be undone!')) {
+    try {
+      const res = await axios.delete(`/api/countries/${id}`);
+
+      dispatch({
+        type: REMOVE_COUNTRY
+      });
+      dispatch(setAlert('Country deleted', 'success'));
+      // Redirect back to dashboard
+      history.push('/');
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: COUNTRY_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
   }
 };

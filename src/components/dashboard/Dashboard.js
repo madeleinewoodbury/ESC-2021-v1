@@ -11,7 +11,7 @@ const Dashboard = ({ auth: { user, isAuthenticated, loading } }) => {
   return loading && user === null ? (
     <Spinner />
   ) : (
-    <div className="dashboard relative background">
+    <div className="dashboard relative background my-3">
       <div className="banner"></div>
       <div className="content-container">
         <h1>Welcome {user && user.name}</h1>

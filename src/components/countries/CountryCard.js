@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CountryCard = ({ country, flag }) => {
+const CountryCard = ({ country, flag, id }) => {
   return (
     <div className="card">
       <div className="card-img">
@@ -9,7 +9,7 @@ const CountryCard = ({ country, flag }) => {
       </div>
       <div className="card-content">
         <div className="card-info">
-          <Link to="/countries/id">{country}</Link>
+          <Link to={`/countries/${id}`}>{country}</Link>
         </div>
       </div>
     </div>
