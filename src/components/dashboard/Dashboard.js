@@ -11,22 +11,20 @@ const Dashboard = ({ auth: { user, isAuthenticated, loading } }) => {
   return loading && user === null ? (
     <Spinner />
   ) : (
-    <div className="dashboard background">
+    <div className="dashboard relative background">
       <div className="banner"></div>
-      <div className="content">
-        <div className="content-container">
-          <h1>Welcome {user && user.name}</h1>
-          {user && user.role === 'admin' && (
-            <div className="btn-container">
-              <Link to="/edit-countries" className="btn btn-dark">
-                Edit Countries
-              </Link>
-              <Link to="#" className="btn btn-dark">
-                Edit Participants
-              </Link>
-            </div>
-          )}
-        </div>
+      <div className="content-container">
+        <h1>Welcome {user && user.name}</h1>
+        {user && user.role === 'admin' && (
+          <div className="btn-container">
+            <Link to="/edit-countries" className="btn btn-dark">
+              Edit Countries
+            </Link>
+            <Link to="#" className="btn btn-dark">
+              Edit Participants
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

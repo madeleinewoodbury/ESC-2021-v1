@@ -16,21 +16,7 @@ const Participants = () => {
   ));
   return (
     <Fragment>
-      {/* <div className="btn-container">
-        <Link to="#" className="btn active">
-          Participants
-        </Link>
-        <Link to="#" className="btn">
-          First Semifinal
-        </Link>
-        <Link to="#" className="btn">
-          Second Semifinal
-        </Link>
-        <Link to="#" className="btn">
-          Grand Final
-        </Link>
-      </div> */}
-      <div className="participants">
+      <div className="participants relative background">
         <div className="banner"></div>
         <div className="card-container">{cards}</div>
       </div>

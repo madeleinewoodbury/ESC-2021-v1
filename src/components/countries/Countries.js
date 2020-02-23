@@ -1,20 +1,43 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import participants from '../../participants';
+import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Spinner from '../layout/Spinner';
+import { getCountries } from '../../actions/countries';
 import CountryCard from './CountryCard';
 
-const Countries = () => {
-  const cards = participants.map(item => (
-    <CountryCard key={item.id} country={item.country} flag={item.flag} />
-  ));
+const Countries = ({ getCountries, countries: { countries, loading } }) => {
+  useEffect(() => {
+    getCountries();
+  }, [getCountries]);
+
   return (
     <Fragment>
-      <div className="countries">
-        <div className="banner"></div>
-        <div className="card-container">{cards}</div>
-      </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="countries relative background">
+          <div className="banner"></div>
+          <div className="card-container">
+            {countries.map(country => (
+              <CountryCard
+                key={country._id}
+                country={country.name}
+                flag={country.flag}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </Fragment>
   );
 };
 
-export default Countries;
+Countries.propTypes = {
+  getCountries: PropTypes.func.isRequired,
+  countries: PropTypes.array.isRequired
+};
+const mapStateToProps = state => ({
+  countries: state.countries
+});
+
+export default connect(mapStateToProps, { getCountries })(Countries);

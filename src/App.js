@@ -6,6 +6,7 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
 // Components
+import PrivateRoute from './components/routing/PrivateRoute';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Dashboard from './components/dashboard/Dashboard';
@@ -37,7 +38,6 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Alert />
           <Switch>
-            <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/participants" component={Participants} />
@@ -48,8 +48,13 @@ const App = () => {
               component={ParticipantPostcard}
             />
             <Route exact path="/countries/:id" component={CountryPostcard} />
-            <Route exact path="/edit-countries" component={EditCountries} />
-            <Route exact path="/add-country" component={AddCountry} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute
+              exact
+              path="/edit-countries"
+              component={EditCountries}
+            />
+            <PrivateRoute exact path="/add-country" component={AddCountry} />
           </Switch>
         </Fragment>
       </Router>
