@@ -328,21 +328,24 @@ li {
 /* Dashboard */
 
 /* Edit */
-.edit-countries .countries-list {
+.edit-countries .countries-list,
+.edit-participants .participants-list {
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
 }
 
-.edit-countries .countries-list .country-item {
+.edit-countries .countries-list .country-item,
+.edit-participants .participants-list .participant-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.edit-countries .countries-list .country-item:nth-of-type(even) {
+.edit-countries .countries-list .country-item:nth-of-type(even),
+.edit-participants .participants-list .participant-item:nth-of-type(even) {
   background-color: rgb(219, 219, 219);
 }
 
@@ -350,7 +353,22 @@ li {
   display: flex;
 }
 
-.edit-countries .countries-list .country-item .country-info img {
+.edit-participants .participants-list .participant-item .participant-info {
+  display: flex;
+  width: 75%;
+}
+
+.edit-participants .participants-list .participant-item .participant-info h2 {
+  color: var(--primary-color);
+}
+
+.edit-countries .countries-list .country-item .country-action,
+.edit-participants .participants-list .participant-item .participant-action {
+  margin-right: 3rem;
+}
+
+.edit-countries .countries-list .country-item .country-info img,
+.edit-participants .participants-list .participant-item .participant-info img {
   width: 50px;
   margin-right: 1rem;
 }

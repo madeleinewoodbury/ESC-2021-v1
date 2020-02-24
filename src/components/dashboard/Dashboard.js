@@ -20,7 +20,7 @@ const Dashboard = ({ auth: { user, isAuthenticated, loading } }) => {
             <Link to="/edit-countries" className="btn btn-dark">
               Edit Countries
             </Link>
-            <Link to="#" className="btn btn-dark">
+            <Link to="/edit-participants" className="btn btn-dark">
               Edit Participants
             </Link>
           </div>
