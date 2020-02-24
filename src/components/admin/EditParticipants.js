@@ -9,7 +9,8 @@ import ParticipantItem from './ParticipantItem';
 const EditParticipants = ({
   auth: { user, isAuthenticated },
   getParticipants,
-  participants: { participants, loading }
+  participants: { participants, loading },
+  history
 }) => {
   useEffect(() => {
     getParticipants();
@@ -33,7 +34,11 @@ const EditParticipants = ({
         </div>
         <div className="participants-list">
           {participants.map(participant => (
-            <ParticipantItem key={participant._id} participant={participant} />
+            <ParticipantItem
+              key={participant._id}
+              participant={participant}
+              history={history}
+            />
           ))}
         </div>
       </div>

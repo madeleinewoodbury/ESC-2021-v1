@@ -18,10 +18,11 @@ import Countries from './components/countries/Countries';
 import ParticipantPostcard from './components/participants/ParticipantPostcard';
 import CountryPostcard from './components/countries/CountryPostcard';
 import EditCountries from './components/admin/EditCountries';
+import EditParticipants from './components/admin/EditParticipants';
 import AddCountry from './components/admin/AddCountry';
 import AddParticipant from './components/admin/AddParticipant';
 import EditCountry from './components/admin/EditCountry';
-import EditParticipants from './components/admin/EditParticipants';
+import EditParticipant from './components/admin/EditParticipant';
 import './App.css';
 
 if (localStorage.token) {
@@ -72,6 +73,11 @@ const App = () => {
               exact
               path="/edit-country/:id"
               component={EditCountry}
+            />
+            <PrivateRoute
+              exact
+              path="/edit-participant/:id"
+              component={EditParticipant}
             />
           </Switch>
         </Fragment>

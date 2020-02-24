@@ -2,8 +2,8 @@ import {
   GET_PARTICIPANT,
   GET_PARTICIPANTS,
   PARTICIPANT_ERROR,
-  CLEAR_PARTICPIANT,
-  REMOVE_PARTICPIANT
+  CLEAR_PARTICIPANT,
+  REMOVE_PARTICIPANT
 } from '../actions/types';
 
 const initialState = {
@@ -28,8 +28,8 @@ export default function(state = initialState, action) {
         participant: payload,
         loading: false
       };
-    case CLEAR_PARTICPIANT:
-    case REMOVE_PARTICPIANT:
+    case CLEAR_PARTICIPANT:
+    case REMOVE_PARTICIPANT:
       return {
         ...state,
         participants: [],

@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { deleteParticipant } from '../../actions/participants';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const ParticipantItem = ({
-  participant: { id, flag, artist, song, country }
+  participant: { _id, flag, artist, song, country },
+  deleteParticipant,
+  history
 }) => {
   return (
     <div className="participant-item">
@@ -13,10 +18,13 @@ const ParticipantItem = ({
         </h2>
       </div>
       <div className="participant-action">
-        <button onClick={console.log('delete')} className="btn btn-danger">
+        <button
+          onClick={e => deleteParticipant(_id, history)}
+          className="btn btn-danger"
+        >
           Delete
         </button>
-        <Link to={`/edit-participant/${id}`} className="btn btn-secondary">
+        <Link to={`/edit-participant/${_id}`} className="btn btn-secondary">
           Edit
         </Link>
       </div>
@@ -24,4 +32,8 @@ const ParticipantItem = ({
   );
 };
 
-export default ParticipantItem;
+ParticipantItem.propTypes = {
+  deleteParticipant: PropTypes.func.isRequired
+};
+
+export default connect(null, { deleteParticipant })(ParticipantItem);

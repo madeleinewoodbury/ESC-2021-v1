@@ -2,8 +2,8 @@ import {
   GET_PARTICIPANT,
   GET_PARTICIPANTS,
   PARTICIPANT_ERROR,
-  CLEAR_PARTICPIANT,
-  REMOVE_PARTICPIANT
+  CLEAR_PARTICIPANT,
+  REMOVE_PARTICIPANT
 } from './types';
 import axios from 'axios';
 import { setAlert } from './alert';
@@ -11,7 +11,7 @@ import { setAlert } from './alert';
 // Get all participants
 export const getParticipants = () => async dispatch => {
   dispatch({
-    type: CLEAR_PARTICPIANT
+    type: CLEAR_PARTICIPANT
   });
   try {
     const res = await axios.get('/api/participants');
@@ -108,9 +108,8 @@ export const deleteParticipant = (id, history) => async dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
       const res = await axios.delete(`/api/participants/${id}`);
-
       dispatch({
-        type: REMOVE_PARTICPIANT
+        type: REMOVE_PARTICIPANT
       });
       dispatch(setAlert('Participant deleted', 'success'));
       // Redirect back to dashboard
