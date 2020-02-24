@@ -1,27 +1,39 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import participants from '../../participants';
+import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Spinner from '../layout/Spinner';
+import { getParticipants } from '../../actions/participants';
 import ParticipantCard from './ParticipantCard';
 
-const Participants = () => {
-  const cards = participants.map(item => (
-    <ParticipantCard
-      key={item.id}
-      country={item.country}
-      emoji={item.emoji}
-      artist={item.artist}
-      song={item.song}
-      image={item.imageUrl}
-    />
-  ));
-  return (
+const Participants = ({
+  getParticipants,
+  participants: { participants, loading }
+}) => {
+  useEffect(() => {
+    getParticipants();
+  }, [getParticipants]);
+  return loading ? (
+    <Spinner />
+  ) : (
     <Fragment>
       <div className="participants relative background">
         <div className="banner"></div>
-        <div className="card-container">{cards}</div>
+        <div className="card-container">
+          {participants.map(participant => (
+            <ParticipantCard key={participant.id} participant={participant} />
+          ))}
+        </div>
       </div>
     </Fragment>
   );
 };
 
-export default Participants;
+Participants.propTypes = {
+  getParticipants: PropTypes.func.isRequired,
+  participants: PropTypes.array.isRequired
+};
+const mapStateToProps = state => ({
+  participants: state.participants
+});
+
+export default connect(mapStateToProps, { getParticipants })(Participants);

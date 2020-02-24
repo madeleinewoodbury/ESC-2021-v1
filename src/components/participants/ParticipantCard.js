@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ParticipantCard = ({ country, emoji, artist, song, image }) => {
+const ParticipantCard = ({ participant }) => {
+  const { country, emoji, artist, song, image, _id } = participant;
   return (
     <div className="card">
       <div className="card-img">
@@ -12,7 +13,7 @@ const ParticipantCard = ({ country, emoji, artist, song, image }) => {
           <Link to="/participants/id">{`${emoji} ${country}`}</Link>
         </div>
         <div className="card-info">
-          <Link to="/participants/id">{artist}</Link>
+          <Link to={`/participants/${_id}`}>{artist}</Link>
           <span>{song}</span>
         </div>
       </div>
