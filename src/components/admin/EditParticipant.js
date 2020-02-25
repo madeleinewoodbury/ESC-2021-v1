@@ -77,131 +77,137 @@ const EditParticipant = ({
   return loading && countries === null ? (
     <Spinner />
   ) : (
-    <div className="admin-form relative background">
+    <div className="admin-form background">
       <div className="banner"></div>
-      <div className="content-container">
-        <h1 className="large text-primary">Add a New Particpant</h1>
-        <small>* = required field</small>
-        <form className="form" onSubmit={e => handleSubmit(e)}>
-          <div className="form-group">
-            <select
-              name="country"
-              value={country}
-              onChange={e => handleChange(e)}
-            >
-              <option value="0">* Select a Country</option>
-              {countries.map(country => (
-                <option value={country.name}>{country.name}</option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="* Artist Name"
-              name="artist"
-              value={artist}
-              onChange={e => handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="* Song title"
-              name="song"
-              value={song}
-              onChange={e => handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Image URL"
-              name="image"
-              value={image}
-              onChange={e => handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Written by"
-              name="writtenBy"
-              value={writtenBy}
-              onChange={e => handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Composer"
-              name="composedBy"
-              value={composedBy}
-              onChange={e => handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <select
-              name="semifinal"
-              value={semifinal}
-              onChange={e => handleChange(e)}
-            >
-              <option value="0">* Select a semifinal</option>
-              <option value="First Semifinal">First Semifinal</option>
-              <option value="Second Semifinal">Second Semifinal</option>
-              <option value="Final">Final</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <p>
-              <input
-                type="checkbox"
-                name="final"
-                checked={final}
-                value={final}
-                onChange={() => {
-                  setFormData({ ...formData, final: !final });
-                }}
-              />{' '}
-              Grand Final
-            </p>
-          </div>
+      <div className="content">
+        <div className="overlay">
+          <div className="container">
+            <div className="container-inner">
+              <h1 className="large">Add a New Particpant</h1>
+              <p>* = required field</p>
+              <form className="form" onSubmit={e => handleSubmit(e)}>
+                <div className="form-group">
+                  <select
+                    name="country"
+                    value={country}
+                    onChange={e => handleChange(e)}
+                  >
+                    <option value="0">* Select a Country</option>
+                    {countries.map(country => (
+                      <option value={country.name}>{country.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="* Artist Name"
+                    name="artist"
+                    value={artist}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="* Song title"
+                    name="song"
+                    value={song}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Image URL"
+                    name="image"
+                    value={image}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Written by"
+                    name="writtenBy"
+                    value={writtenBy}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Composer"
+                    name="composedBy"
+                    value={composedBy}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <select
+                    name="semifinal"
+                    value={semifinal}
+                    onChange={e => handleChange(e)}
+                  >
+                    <option value="0">* Select a semifinal</option>
+                    <option value="First Semifinal">First Semifinal</option>
+                    <option value="Second Semifinal">Second Semifinal</option>
+                    <option value="Final">Final</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <p>
+                    <input
+                      type="checkbox"
+                      name="final"
+                      checked={final}
+                      value={final}
+                      onChange={() => {
+                        setFormData({ ...formData, final: !final });
+                      }}
+                    />{' '}
+                    Grand Final
+                  </p>
+                </div>
 
-          <div className="form-group">
-            <textarea
-              placeholder="Intro"
-              name="intro"
-              value={intro}
-              onChange={e => handleChange(e)}
-            ></textarea>
-            <small className="form-text">Write a short intro</small>
-          </div>
-          <div className="form-group">
-            <textarea
-              placeholder="Bio"
-              name="bio"
-              value={bio}
-              onChange={e => handleChange(e)}
-            ></textarea>
-            <small className="form-text">
-              Write a brief bio of the contestant
-            </small>
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Youtube link"
-              name="youtube"
-              value={youtube}
-              onChange={e => handleChange(e)}
-            />
-          </div>
+                <div className="form-group">
+                  <textarea
+                    placeholder="Intro"
+                    name="intro"
+                    value={intro}
+                    onChange={e => handleChange(e)}
+                  ></textarea>
+                  <small className="form-text">Write a short intro</small>
+                </div>
+                <div className="form-group">
+                  <textarea
+                    placeholder="Bio"
+                    name="bio"
+                    value={bio}
+                    onChange={e => handleChange(e)}
+                  ></textarea>
+                  <small className="form-text">
+                    Write a brief bio of the contestant
+                  </small>
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Youtube link"
+                    name="youtube"
+                    value={youtube}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
 
-          <input type="submit" className="btn btn-primary my-1" />
-          <Link className="btn btn-light my-1" to="/dashboard">
-            Go Back
-          </Link>
-        </form>
+                <input type="submit" className="btn btn-primary my-1" />
+                <Link className="btn btn-light my-1" to="/dashboard">
+                  Go Back
+                </Link>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

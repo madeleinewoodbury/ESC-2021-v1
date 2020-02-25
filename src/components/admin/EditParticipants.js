@@ -23,23 +23,28 @@ const EditParticipants = ({
   return loading && participants === null ? (
     <Spinner />
   ) : (
-    <div className="edit-participants relative background my-3">
+    <div className="admin background">
       <div className="banner"></div>
-      <div className="content-container">
-        <h1>Edit Participants</h1>
-        <div className="btn-container">
-          <Link to="/add-participant" className="btn btn-primary">
-            Add Participant
-          </Link>
-        </div>
-        <div className="participants-list">
-          {participants.map(participant => (
-            <ParticipantItem
-              key={participant._id}
-              participant={participant}
-              history={history}
-            />
-          ))}
+      <div className="content">
+        <div className="overlay">
+          <div className="container">
+            <h1 className="large">Edit Participants</h1>
+            <div className="btn-container">
+              <Link to="/add-participant" className="btn btn-primary">
+                <i className="fas fa-plus-square fa-2x"></i>
+              </Link>
+            </div>
+
+            <div className="list">
+              {participants.map(participant => (
+                <ParticipantItem
+                  key={participant._id}
+                  participant={participant}
+                  history={history}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

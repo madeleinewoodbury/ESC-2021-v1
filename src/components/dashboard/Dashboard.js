@@ -16,17 +16,19 @@ const Dashboard = ({ auth: { user, isAuthenticated, loading } }) => {
       <div className="content">
         <div className="overlay">
           <div className="container">
-            <h1>Welcome {user && user.name}</h1>
-            {user && user.role === 'admin' && (
-              <div className="btn-container">
-                <Link to="/edit-countries" className="btn btn-dark">
-                  Edit Countries
-                </Link>
-                <Link to="/edit-participants" className="btn btn-dark">
-                  Edit Participants
-                </Link>
-              </div>
-            )}
+            <div className="container-inner">
+              <h1 className="large">Welcome {user && user.name}</h1>
+              {user && user.role === 'admin' && (
+                <div className="btn-container">
+                  <Link to="/edit-countries" className="btn btn-dark">
+                    Edit Countries
+                  </Link>
+                  <Link to="/edit-participants" className="btn btn-dark">
+                    Edit Participants
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

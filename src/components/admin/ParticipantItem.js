@@ -10,14 +10,17 @@ const ParticipantItem = ({
   history
 }) => {
   return (
-    <div className="participant-item">
-      <div className="participant-info">
+    <div className="list-item">
+      <div className="item-info">
         <img src={flag} alt={country} />
         <h2>
-          {artist} <em>"{song}"</em>
+          {artist}{' '}
+          <span>
+            <em>"{song}"</em>
+          </span>
         </h2>
       </div>
-      <div className="participant-action">
+      <div className="item-action">
         <button
           onClick={e => deleteParticipant(_id, history)}
           className="btn btn-danger"

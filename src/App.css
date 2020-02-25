@@ -56,11 +56,15 @@ li {
 }
 
 .container {
-  width: 80%;
+  width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   overflow: auto;
+}
+
+.container-inner {
+  margin: 2rem;
 }
 
 .overlay {
@@ -109,58 +113,6 @@ li {
 
 .text-white {
   color: #fff;
-}
-
-/* Padding */
-.p {
-  padding: 0.5rem;
-}
-.p-1 {
-  padding: 1rem;
-}
-.p-2 {
-  padding: 2rem;
-}
-.p-3 {
-  padding: 3rem;
-}
-.py {
-  padding: 0.5rem 0;
-}
-.py-1 {
-  padding: 1rem 0;
-}
-.py-2 {
-  padding: 2rem 0;
-}
-.py-3 {
-  padding: 3rem 0;
-}
-
-/* Margin */
-.m {
-  margin: 0.5rem;
-}
-.m-1 {
-  margin: 1rem;
-}
-.m-2 {
-  margin: 2rem;
-}
-.m-3 {
-  margin: 3rem;
-}
-.my {
-  margin: 0.5rem 0;
-}
-.my-1 {
-  margin: 1rem 0;
-}
-.my-2 {
-  margin: 2rem 0;
-}
-.my-3 {
-  margin: 3rem 0;
 }
 
 .btn-container {
@@ -323,54 +275,70 @@ li {
 }
 
 /* Edit */
-.edit-countries .countries-list,
-.edit-participants .participants-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
+.admin .container h1 {
+  color: #fff;
+  margin: 2rem;
 }
 
-.edit-countries .countries-list .country-item,
-.edit-participants .participants-list .participant-item {
+.admin .container .btn-container {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+.admin .container .list {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin .container .list .list-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin: 0 2rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 0.25rem;
 }
 
-.edit-countries .countries-list .country-item:nth-of-type(even),
-.edit-participants .participants-list .participant-item:nth-of-type(even) {
-  background-color: rgb(219, 219, 219);
-}
-
-.edit-countries .countries-list .country-item .country-info {
-  display: flex;
-}
-
-.edit-participants .participants-list .participant-item .participant-info {
+.admin .container .list .list-item .item-info {
   display: flex;
   width: 75%;
 }
 
-.edit-participants .participants-list .participant-item .participant-info h2 {
-  color: var(--primary-color);
+.admin .container .list .list-item .item-info h2 {
+  color: #fff;
 }
 
-.edit-countries .countries-list .country-item .country-action,
-.edit-participants .participants-list .participant-item .participant-action {
-  margin-right: 3rem;
+.admin .container .list .list-item .item-info h2 span {
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+  margin-left: 1rem;
 }
 
-.edit-countries .countries-list .country-item .country-info img,
-.edit-participants .participants-list .participant-item .participant-info img {
+.admin .container .list .list-item .item-info img {
   width: 50px;
   margin-right: 1rem;
 }
 
-/* Add Country */
+.admin .container .list .list-item .item-action {
+  margin-right: 3rem;
+  display: flex;
+}
 
 /* Forms */
+.admin-form .container-inner {
+  width: 80%;
+  margin: 2rem auto;
+  color: #fff;
+}
+
+.admin-form .container-inner p,
+.admin-form .container-inner small {
+  color: var(--secondary-color);
+}
+
 .form .form-group {
   margin: 1.2rem 0;
 }
@@ -392,6 +360,7 @@ li {
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .form input[type='submit'],
@@ -424,13 +393,8 @@ button {
   margin-left: 25%;
 }
 
+.participants .content .container,
 .countries .content .container {
-  width: 90%;
-  margin: 2rem auto;
-  overflow: auto;
-}
-
-.participants .content .container {
   width: 100%;
   margin: 0;
 }
@@ -440,29 +404,33 @@ button {
   flex-wrap: wrap;
 }
 
-.countries .card-container {
-  align-items: center;
-  justify-content: space-evenly;
-}
-
 .card {
   display: flex;
   flex-direction: column;
 }
 
-.participants .card {
+.participants .card,
+.countries .card {
   width: 25%;
-  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .countries .card {
-  justify-content: center;
-  align-items: center;
-  width: 15%;
+  margin-bottom: 1rem;
 }
 
-.card .card-img img {
+.participants .card .card-img img {
   width: 100%;
+}
+
+.countries .card .card-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.countries .card .card-img img {
+  width: 50%;
 }
 
 .card .card-content {
@@ -501,17 +469,21 @@ button {
 
 .card .card-content .card-info a {
   font-size: 1.5em;
-  /* color: black; */
   color: #fff;
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
+}
+
+.countries .card .card-content .card-info a {
+  text-align: center;
 }
 
 .card .card-content .card-info a:hover {
-  color: #32a9d1;
+  color: var(--primary-color);
 }
 
 .card .card-content .card-info span {
   font-size: 0.9rem;
+  color: var(--secondary-color);
 }
 
 /* Postcard */

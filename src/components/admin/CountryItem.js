@@ -6,12 +6,12 @@ import { deleteCountry } from '../../actions/countries';
 
 const CountryItem = ({ flag, name, id, deleteCountry, history }) => {
   return (
-    <div className="country-item">
-      <div className="country-info">
+    <div className="list-item">
+      <div className="item-info">
         <img src={flag} alt={name} />
         <h2>{name}</h2>
       </div>
-      <div className="country-action">
+      <div className="item-action">
         <button
           onClick={e => deleteCountry(id, history)}
           className="btn btn-danger"

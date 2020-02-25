@@ -14,7 +14,9 @@ const ParticipantCard = ({ participant }) => {
         </div>
         <div className="card-info">
           <Link to={`/participants/${_id}`}>{artist}</Link>
-          <span>{song}</span>
+          <span>
+            <em>"{song}"</em>
+          </span>
         </div>
       </div>
     </div>

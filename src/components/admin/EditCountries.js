@@ -23,25 +23,29 @@ const EditCountries = ({
   return loading && countries === null ? (
     <Spinner />
   ) : (
-    <div className="edit-countries relative background my-3">
+    <div className="admin background">
       <div className="banner"></div>
-      <div className="content-container">
-        <h1>Edit Countries</h1>
-        <div className="btn-container">
-          <Link to="/add-country" className="btn btn-primary">
-            Add Country
-          </Link>
-        </div>
-        <div className="countries-list">
-          {countries.map(country => (
-            <CountryItem
-              key={country.id}
-              name={country.name}
-              flag={country.flag}
-              id={country._id}
-              history={history}
-            />
-          ))}
+      <div className="content">
+        <div className="overlay">
+          <div className="container">
+            <h1 className="large">Edit Countries</h1>
+            <div className="btn-container">
+              <Link to="/add-country" className="btn btn-primary">
+                <i className="fas fa-plus-square fa-2x"></i>
+              </Link>
+            </div>
+            <div className="list">
+              {countries.map(country => (
+                <CountryItem
+                  key={country.id}
+                  name={country.name}
+                  flag={country.flag}
+                  id={country._id}
+                  history={history}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
