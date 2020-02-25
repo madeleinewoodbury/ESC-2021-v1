@@ -16,12 +16,21 @@ const Participants = ({
     <Spinner />
   ) : (
     <Fragment>
-      <div className="participants relative background">
+      <div className="participants background">
         <div className="banner"></div>
-        <div className="card-container">
-          {participants.map(participant => (
-            <ParticipantCard key={participant.id} participant={participant} />
-          ))}
+        <div className="content">
+          <div className="overlay">
+            <div className="container">
+              <div className="card-container">
+                {participants.map(participant => (
+                  <ParticipantCard
+                    key={participant.id}
+                    participant={participant}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Fragment>

@@ -15,17 +15,25 @@ const Countries = ({ getCountries, countries: { countries, loading } }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="countries relative background">
+        <div className="countries background">
           <div className="banner"></div>
-          <div className="card-container">
-            {countries.map(country => (
-              <CountryCard
-                key={country._id}
-                country={country.name}
-                flag={country.flag}
-                id={country._id}
-              />
-            ))}
+          <div className="content">
+            <div className="overlay">
+              <div className="container">
+                <div className="container">
+                  <div className="card-container">
+                    {countries.map(country => (
+                      <CountryCard
+                        key={country._id}
+                        country={country.name}
+                        flag={country.flag}
+                        id={country._id}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
