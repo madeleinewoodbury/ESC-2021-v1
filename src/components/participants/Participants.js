@@ -1,4 +1,5 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
@@ -9,6 +10,10 @@ const Participants = ({
   getParticipants,
   participants: { participants, loading }
 }) => {
+  const [show, setShow] = useState(1);
+  const activeClass = 'btn btn-light active';
+  const classes = 'btn btn-light';
+
   useEffect(() => {
     getParticipants();
   }, [getParticipants]);
@@ -21,13 +26,73 @@ const Participants = ({
         <div className="content">
           <div className="overlay">
             <div className="container">
+              <div className="btn-container">
+                <button
+                  onClick={e => setShow(1)}
+                  className={show == 1 ? activeClass : classes}
+                >
+                  All Participants
+                </button>
+                <button
+                  onClick={e => setShow(2)}
+                  className={show == 2 ? activeClass : classes}
+                >
+                  First Semifinal
+                </button>
+                <button
+                  onClick={e => setShow(3)}
+                  className={show == 3 ? activeClass : classes}
+                >
+                  Second Semifinal
+                </button>
+                <button
+                  onClick={e => setShow(4)}
+                  className={show == 4 ? activeClass : classes}
+                >
+                  Final
+                </button>
+              </div>
               <div className="card-container">
-                {participants.map(participant => (
-                  <ParticipantCard
-                    key={participant.id}
-                    participant={participant}
-                  />
-                ))}
+                {show == 1 &&
+                  participants.map(participant => (
+                    <ParticipantCard
+                      key={participant.id}
+                      participant={participant}
+                    />
+                  ))}
+                {show == 2 &&
+                  participants.map(participant => {
+                    if (participant.semifinal === 'First Semifinal') {
+                      return (
+                        <ParticipantCard
+                          key={participant.id}
+                          participant={participant}
+                        />
+                      );
+                    }
+                  })}
+                {show == 3 &&
+                  participants.map(participant => {
+                    if (participant.semifinal === 'Second Semifinal') {
+                      return (
+                        <ParticipantCard
+                          key={participant.id}
+                          participant={participant}
+                        />
+                      );
+                    }
+                  })}
+                {show == 4 &&
+                  participants.map(participant => {
+                    if (participant.final) {
+                      return (
+                        <ParticipantCard
+                          key={participant.id}
+                          participant={participant}
+                        />
+                      );
+                    }
+                  })}
               </div>
             </div>
           </div>

@@ -19,6 +19,7 @@ const EditParticipant = ({
     country: '',
     artist: '',
     song: '',
+    year: '',
     image: '',
     intro: '',
     bio: '',
@@ -26,7 +27,8 @@ const EditParticipant = ({
     composedBy: '',
     semifinal: '',
     final: false,
-    youtube: ''
+    youtube: '',
+    points: ''
   });
 
   useEffect(() => {
@@ -37,6 +39,7 @@ const EditParticipant = ({
         country: loading || !participant.country ? '' : participant.country,
         artist: loading || !participant.artist ? '' : participant.artist,
         song: loading || !participant.song ? '' : participant.song,
+        year: loading || !participant.year ? '' : participant.year,
         image: loading || !participant.image ? '' : participant.image,
         intro: loading || !participant.intro ? '' : participant.intro,
         bio: loading || !participant.bio ? '' : participant.bio,
@@ -47,7 +50,8 @@ const EditParticipant = ({
         semifinal:
           loading || !participant.semifinal ? '' : participant.semifinal,
         final: loading || !participant.final ? false : participant.final,
-        youtube: loading || !participant.youtube ? '' : participant.youtube
+        youtube: loading || !participant.youtube ? '' : participant.youtube,
+        points: loading || !participant.points ? '' : participant.points
       });
     }
   }, [loading, getCountries, getParticipant, match.params.id]);
@@ -64,6 +68,7 @@ const EditParticipant = ({
     country,
     artist,
     song,
+    year,
     image,
     intro,
     bio,
@@ -71,7 +76,8 @@ const EditParticipant = ({
     composedBy,
     semifinal,
     final,
-    youtube
+    youtube,
+    points
   } = formData;
 
   return loading && countries === null ? (
@@ -113,6 +119,15 @@ const EditParticipant = ({
                     placeholder="* Song title"
                     name="song"
                     value={song}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="number"
+                    placeholder="Year"
+                    name="year"
+                    value={year}
                     onChange={e => handleChange(e)}
                   />
                 </div>
@@ -196,6 +211,15 @@ const EditParticipant = ({
                     placeholder="Youtube link"
                     name="youtube"
                     value={youtube}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="number"
+                    placeholder="Points"
+                    name="points"
+                    value={points}
                     onChange={e => handleChange(e)}
                   />
                 </div>

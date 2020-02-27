@@ -13,12 +13,14 @@ const ParticipantItem = ({
     <div className="list-item">
       <div className="item-info">
         <img src={flag} alt={country} />
-        <h2>
-          {artist}{' '}
-          <span>
-            <em>"{song}"</em>
-          </span>
-        </h2>
+        <Link to={`/participants/${_id}`}>
+          <h2>
+            {artist}{' '}
+            <span>
+              <em>"{song}"</em>
+            </span>
+          </h2>
+        </Link>
       </div>
       <div className="item-action">
         <button

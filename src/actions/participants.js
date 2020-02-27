@@ -58,7 +58,7 @@ export const addParticipant = (formData, history) => async dispatch => {
       payload: res.data
     });
     dispatch(setAlert('Participant Added', 'success'));
-    history.push('/');
+    history.push('/edit-participants');
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -89,7 +89,7 @@ export const updateParticipant = (id, formData, history) => async dispatch => {
     dispatch(setAlert('Participant Updated', 'success'));
 
     // Redirect back to dashboard
-    history.push(`/dashboard`);
+    history.push('/edit-participants');
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -113,7 +113,7 @@ export const deleteParticipant = (id, history) => async dispatch => {
       });
       dispatch(setAlert('Participant deleted', 'success'));
       // Redirect back to dashboard
-      history.push('/');
+      history.push('/edit-participants');
     } catch (err) {
       console.log(err);
       dispatch({

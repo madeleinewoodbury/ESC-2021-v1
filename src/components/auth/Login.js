@@ -28,7 +28,7 @@ const Login = ({ login, isAuthenticated }) => {
     <Fragment>
       <div className="auth background">
         <div className="banner"></div>
-        <div className="content content-bg">
+        <div className="content">
           <div className="overlay">
             <div className="auth-container">
               <h1 className="large">Sign In</h1>

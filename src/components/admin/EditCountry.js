@@ -72,6 +72,10 @@ const EditCountry = ({
     youtube
   } = formData;
 
+  if (country !== null) {
+    console.log(intro);
+  }
+
   return loading && country === null ? (
     <Spinner />
   ) : (

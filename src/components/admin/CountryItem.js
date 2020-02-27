@@ -9,7 +9,9 @@ const CountryItem = ({ flag, name, id, deleteCountry, history }) => {
     <div className="list-item">
       <div className="item-info">
         <img src={flag} alt={name} />
-        <h2>{name}</h2>
+        <Link to={`/countries/${id}`}>
+          <h2>{name}</h2>
+        </Link>
       </div>
       <div className="item-action">
         <button

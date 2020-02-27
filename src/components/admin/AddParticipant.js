@@ -20,6 +20,7 @@ const AddParticipant = ({
     country: '',
     artist: '',
     song: '',
+    year: '',
     image: '',
     intro: '',
     bio: '',
@@ -27,7 +28,8 @@ const AddParticipant = ({
     composedBy: '',
     semifinal: '',
     final: false,
-    youtube: ''
+    youtube: '',
+    points: ''
   });
 
   const handleChange = e =>
@@ -42,6 +44,7 @@ const AddParticipant = ({
     country,
     artist,
     song,
+    year,
     image,
     intro,
     bio,
@@ -49,7 +52,8 @@ const AddParticipant = ({
     composedBy,
     semifinal,
     final,
-    youtube
+    youtube,
+    points
   } = formData;
 
   return loading && countries === null ? (
@@ -91,6 +95,15 @@ const AddParticipant = ({
                     placeholder="* Song title"
                     name="song"
                     value={song}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="number"
+                    placeholder="Year"
+                    name="year"
+                    value={year}
                     onChange={e => handleChange(e)}
                   />
                 </div>
@@ -174,6 +187,15 @@ const AddParticipant = ({
                     placeholder="Youtube link"
                     name="youtube"
                     value={youtube}
+                    onChange={e => handleChange(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="number"
+                    placeholder="Points"
+                    name="points"
+                    value={points}
                     onChange={e => handleChange(e)}
                   />
                 </div>

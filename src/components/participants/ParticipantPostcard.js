@@ -38,7 +38,7 @@ const ParticipantPostcard = ({
           <div className="postcard-info">
             <div>
               <h3>Country</h3>
-              <Link to="/countries/id">
+              <Link to={`/countries/${participant.countryId}`}>
                 {participant.emoji} {participant.country}
               </Link>
             </div>

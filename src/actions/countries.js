@@ -27,7 +27,7 @@ export const getCountries = () => async dispatch => {
   }
 };
 
-// Get country by id
+// Get country by name
 export const getCountry = id => async dispatch => {
   try {
     const res = await axios.get(`/api/countries/${id}`);
@@ -58,7 +58,7 @@ export const addCountry = (formData, history) => async dispatch => {
       payload: res.data
     });
     dispatch(setAlert('Country Added', 'success'));
-    history.push('/');
+    history.push('/edit-countries');
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -89,7 +89,7 @@ export const updateCountry = (id, formData, history) => async dispatch => {
     dispatch(setAlert('Country Updated', 'success'));
 
     // Redirect back to dashboard
-    history.push(`/dashboard`);
+    history.push('/edit-countries');
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -114,7 +114,7 @@ export const deleteCountry = (id, history) => async dispatch => {
       });
       dispatch(setAlert('Country deleted', 'success'));
       // Redirect back to dashboard
-      history.push('/');
+      history.push('/edit-countries');
     } catch (err) {
       console.log(err);
       dispatch({
