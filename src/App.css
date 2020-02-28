@@ -608,6 +608,23 @@ button {
   padding-bottom: 0.5rem;
 }
 
+.postcard .postcard-top .postcard-info .user-votes h3 {
+  padding-bottom: 0;
+  margin-bottom: -0.25rem;
+}
+
+.postcard .postcard-top .postcard-info .user-votes .form {
+  padding: 0;
+  margin: 0;
+}
+
+.postcard .postcard-top .postcard-info .user-votes .form select {
+  margin: 0;
+  width: 100%;
+  padding: 0 0.4rem;
+  font-size: 1rem;
+}
+
 .postcard .postcard-content {
   width: 80%;
   margin-top: -2px auto 0 auto;

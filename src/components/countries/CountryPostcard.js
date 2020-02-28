@@ -71,6 +71,7 @@ const CountryPostcard = ({
                 <div className="postcard-video">
                   {country.youtube && (
                     <iframe
+                      title={country.name}
                       src={country.youtube}
                       frameBorder="0"
                       allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"

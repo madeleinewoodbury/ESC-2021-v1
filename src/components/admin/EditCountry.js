@@ -48,7 +48,7 @@ const EditCountry = ({
         youtube: loading || !country.youtube ? '' : country.youtube
       });
     }
-  }, [loading, getCountry, match.params.id]);
+  }, [loading, getCountry, match.params.id, country]);
 
   const handleChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -71,10 +71,6 @@ const EditCountry = ({
     bio,
     youtube
   } = formData;
-
-  if (country !== null) {
-    console.log(intro);
-  }
 
   return loading && country === null ? (
     <Spinner />

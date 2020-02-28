@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
@@ -8,11 +8,18 @@ import { getParticipant } from '../../actions/participants';
 const ParticipantPostcard = ({
   getParticipant,
   participants: { participant, loading },
+  auth: { isAuthenticated },
   match
 }) => {
+  const [vote, setVote] = useState(5);
+
   useEffect(() => {
     getParticipant(match.params.id);
-  }, [getParticipant]);
+  }, [getParticipant, match.params.id]);
+
+  const handleChange = e =>
+    setVote({ ...vote, [e.target.name]: e.target.value });
+
   return loading || participant === null ? (
     <Spinner />
   ) : (
@@ -54,6 +61,31 @@ const ParticipantPostcard = ({
               <h3>Composed by</h3>
               <span>{participant.composedBy}</span>
             </div>
+            {isAuthenticated && (
+              <div className="user-votes">
+                <h3>Your Votes</h3>
+                <form className="form">
+                  <div className="form-group">
+                    <select
+                      name="vote"
+                      value={vote}
+                      onChange={e => handleChange(e)}
+                    >
+                      <option value="1">1 points</option>
+                      <option value="2">2 points</option>
+                      <option value="3">3 points</option>
+                      <option value="4">4 points</option>
+                      <option value="5">5 points</option>
+                      <option value="6">6 points</option>
+                      <option value="7">7 points</option>
+                      <option value="8">8 points</option>
+                      <option value="10">10 points</option>
+                      <option value="12">12 points</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+            )}
           </div>
         </div>
 
@@ -65,6 +97,7 @@ const ParticipantPostcard = ({
           {participant.youtube && (
             <div className="postcard-video">
               <iframe
+                title={participant.artist}
                 src={participant.youtube}
                 frameBorder="0"
                 allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
@@ -80,11 +113,13 @@ const ParticipantPostcard = ({
 
 ParticipantPostcard.propTypes = {
   getParticipant: PropTypes.func.isRequired,
-  participants: PropTypes.object.isRequired
+  participants: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  participants: state.participants
+  participants: state.participants,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { getParticipant })(

@@ -54,7 +54,7 @@ const EditParticipant = ({
         points: loading || !participant.points ? '' : participant.points
       });
     }
-  }, [loading, getCountries, getParticipant, match.params.id]);
+  }, [loading, getCountries, getParticipant, match.params.id, participant]);
 
   const handleChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -224,7 +224,7 @@ const EditParticipant = ({
                   />
                 </div>
 
-                <input type="submit" className="btn btn-primary my-1" />
+                <input type="submit" className="btn btn-primary" />
                 <Link className="btn btn-light my-1" to="/dashboard">
                   Go Back
                 </Link>
