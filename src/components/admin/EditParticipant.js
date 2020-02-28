@@ -54,7 +54,7 @@ const EditParticipant = ({
         points: loading || !participant.points ? '' : participant.points
       });
     }
-  }, [loading, getCountries, getParticipant, match.params.id, participant]);
+  }, [loading, getCountries, getParticipant, match.params.id]);
 
   const handleChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

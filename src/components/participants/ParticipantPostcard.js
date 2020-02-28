@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getParticipant } from '../../actions/participants';
+import VoteForm from './VoteForm';
 
 const ParticipantPostcard = ({
   getParticipant,
@@ -11,14 +12,9 @@ const ParticipantPostcard = ({
   auth: { isAuthenticated },
   match
 }) => {
-  const [vote, setVote] = useState(5);
-
   useEffect(() => {
     getParticipant(match.params.id);
   }, [getParticipant, match.params.id]);
-
-  const handleChange = e =>
-    setVote({ ...vote, [e.target.name]: e.target.value });
 
   return loading || participant === null ? (
     <Spinner />
@@ -61,31 +57,7 @@ const ParticipantPostcard = ({
               <h3>Composed by</h3>
               <span>{participant.composedBy}</span>
             </div>
-            {isAuthenticated && (
-              <div className="user-votes">
-                <h3>Your Votes</h3>
-                <form className="form">
-                  <div className="form-group">
-                    <select
-                      name="vote"
-                      value={vote}
-                      onChange={e => handleChange(e)}
-                    >
-                      <option value="1">1 points</option>
-                      <option value="2">2 points</option>
-                      <option value="3">3 points</option>
-                      <option value="4">4 points</option>
-                      <option value="5">5 points</option>
-                      <option value="6">6 points</option>
-                      <option value="7">7 points</option>
-                      <option value="8">8 points</option>
-                      <option value="10">10 points</option>
-                      <option value="12">12 points</option>
-                    </select>
-                  </div>
-                </form>
-              </div>
-            )}
+            {isAuthenticated && <VoteForm id={participant._id} />}
           </div>
         </div>
 

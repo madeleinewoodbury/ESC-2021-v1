@@ -5,7 +5,9 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT,
+  GET_VOTE,
+  VOTE_ERROR
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 import { setAlert } from './alert';
@@ -52,7 +54,6 @@ export const register = ({ name, email, password }) => async dispatch => {
     const errors = err.response.data.errors;
     if (errors) {
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-      console.log('hello');
     }
 
     dispatch({
@@ -96,4 +97,21 @@ export const logout = () => dispatch => {
   dispatch({
     type: LOGOUT
   });
+};
+
+// Vote on participant
+export const voteOnParticipant = (id, vote) => async dispatch => {
+  try {
+    const res = await axios.post(`/api/participants/vote/${id}/${vote}`);
+    dispatch({
+      type: GET_VOTE,
+      payload: res.data
+    });
+    dispatch(setAlert('Vote Updated', 'success'));
+  } catch (err) {
+    dispatch({
+      type: VOTE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
 };
