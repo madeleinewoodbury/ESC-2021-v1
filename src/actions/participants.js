@@ -31,6 +31,7 @@ export const getParticipants = () => async dispatch => {
 export const getParticipant = id => async dispatch => {
   try {
     const res = await axios.get(`/api/participants/${id}`);
+
     dispatch({
       type: GET_PARTICIPANT,
       payload: res.data
@@ -52,7 +53,6 @@ export const addParticipant = (formData, history) => async dispatch => {
       }
     };
     const res = await axios.post('/api/participants', formData, config);
-
     dispatch({
       type: GET_PARTICIPANT,
       payload: res.data

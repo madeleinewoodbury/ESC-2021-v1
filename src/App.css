@@ -293,7 +293,8 @@ li {
 }
 
 /* Edit */
-.admin .container h1 {
+.admin .container h1,
+.dashboard .container h1 {
   color: #fff;
   margin: 2rem;
 }
@@ -304,14 +305,20 @@ li {
   right: 2rem;
 }
 
-.admin .container .list {
+.dashboard .container .btn-container {
+  margin: 2rem;
+}
+
+.admin .container .list,
+.dashboard .container .list {
   width: 80%;
   display: flex;
   flex-direction: column;
   margin-bottom: 3rem;
 }
 
-.admin .container .list .list-item {
+.admin .container .list .list-item,
+.dashboard .container .list .list-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -321,26 +328,31 @@ li {
   padding: 0.25rem;
 }
 
-.admin .container .list .list-item .item-info {
+.admin .container .list .list-item .item-info,
+.dashboard .container .list .list-item .item-info {
   display: flex;
   width: 75%;
 }
 
-.admin .container .list .list-item .item-info h2 {
+.admin .container .list .list-item .item-info h2,
+.dashboard .container .list .list-item .item-info h2 {
   color: #fff;
 }
 
-.admin .container .list .list-item .item-info h2:hover {
+.admin .container .list .list-item .item-info h2:hover,
+.dashboard .container .list .list-item .item-info h2:hover {
   color: var(--primary-color);
 }
 
-.admin .container .list .list-item .item-info h2 span {
+.admin .container .list .list-item .item-info h2 span,
+.dashboard .container .list .list-item .item-info h2 span {
   color: var(--secondary-color);
   font-size: 1.3rem;
   margin-left: 1rem;
 }
 
-.admin .container .list .list-item .item-info img {
+.admin .container .list .list-item .item-info img,
+.dashboard .container .list .list-item .item-info img {
   width: 50px;
   margin-right: 1rem;
 }
@@ -348,6 +360,17 @@ li {
 .admin .container .list .list-item .item-action {
   margin-right: 3rem;
   display: flex;
+}
+
+.dashboard .container .list .list-item .item-vote {
+  margin-right: 3rem;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.dashboard .container .list .list-item .item-vote h4 span {
+  margin-left: 0.2rem;
+  font-size: 1.2rem;
 }
 
 /* Forms */
