@@ -1,20 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getParticipant } from '../../actions/participants';
+import { loadUser } from '../../actions/auth';
+import { getParticipant, voteOnParticipant } from '../../actions/participants';
 import VoteForm from './VoteForm';
 
 const ParticipantPostcard = ({
   getParticipant,
+  voteOnParticipant,
+  loadUser,
   participants: { participant, loading },
-  auth: { isAuthenticated },
+  auth: { isAuthenticated, user },
   match
 }) => {
+  const [formData, setFormData] = useState('');
+
   useEffect(() => {
     getParticipant(match.params.id);
-  }, [getParticipant, match.params.id]);
+    if (user !== null) {
+      const userVote = user.votes.find(
+        vote => vote.participant === match.params.id
+      );
+      if (userVote) {
+        setFormData(userVote.vote);
+      }
+    }
+  }, [getParticipant, match.params.id, user]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    voteOnParticipant(participant._id, formData);
+  };
 
   return loading || participant === null ? (
     <Spinner />
@@ -57,7 +75,34 @@ const ParticipantPostcard = ({
               <h3>Composed by</h3>
               <span>{participant.composedBy}</span>
             </div>
-            {isAuthenticated && <VoteForm id={participant._id} />}
+            {isAuthenticated && user && (
+              <div className="user-votes">
+                <h3>Your Votes</h3>
+
+                <form className="form" onSubmit={e => handleSubmit(e)}>
+                  <div className="form-group">
+                    <select
+                      name="vote"
+                      value={formData}
+                      onChange={e => setFormData(e.target.value)}
+                    >
+                      <option value="0">Give your vote</option>
+                      <option value="1">1 points</option>
+                      <option value="2">2 points</option>
+                      <option value="3">3 points</option>
+                      <option value="4">4 points</option>
+                      <option value="5">5 points</option>
+                      <option value="6">6 points</option>
+                      <option value="7">7 points</option>
+                      <option value="8">8 points</option>
+                      <option value="10">10 points</option>
+                      <option value="12">12 points</option>
+                    </select>
+                  </div>
+                  <input type="submit" value="Vote" />
+                </form>
+              </div>
+            )}
           </div>
         </div>
 
@@ -84,7 +129,9 @@ const ParticipantPostcard = ({
 };
 
 ParticipantPostcard.propTypes = {
+  voteOnParticipant: PropTypes.func.isRequired,
   getParticipant: PropTypes.func.isRequired,
+  loadUser: PropTypes.func.isRequired,
   participants: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -94,6 +141,8 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { getParticipant })(
-  ParticipantPostcard
-);
+export default connect(mapStateToProps, {
+  voteOnParticipant,
+  getParticipant,
+  loadUser
+})(ParticipantPostcard);

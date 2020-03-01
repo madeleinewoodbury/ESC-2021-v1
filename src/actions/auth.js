@@ -100,18 +100,18 @@ export const logout = () => dispatch => {
 };
 
 // Vote on participant
-export const voteOnParticipant = (id, vote) => async dispatch => {
-  try {
-    const res = await axios.post(`/api/participants/vote/${id}/${vote}`);
-    dispatch({
-      type: GET_VOTE,
-      payload: res.data
-    });
-    dispatch(setAlert('Vote Updated', 'success'));
-  } catch (err) {
-    dispatch({
-      type: VOTE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
-  }
-};
+// export const voteOnParticipant = (id, vote) => async dispatch => {
+//   try {
+//     const res = await axios.post(`/api/participants/vote/${id}/${vote}`);
+//     dispatch({
+//       type: GET_VOTE,
+//       payload: res.data
+//     });
+//     dispatch(setAlert('Vote Updated', 'success'));
+//   } catch (err) {
+//     dispatch({
+//       type: VOTE_ERROR,
+//       payload: { msg: err.response.statusText, status: err.response.status }
+//     });
+//   }
+// };

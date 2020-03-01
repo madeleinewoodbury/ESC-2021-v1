@@ -4,36 +4,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import DashboardItem from './DashboardItem';
+import { loadUser } from '../../actions/auth';
 import { getParticipants, getParticipant } from '../../actions/participants';
 
 const Dashboard = ({
   getParticipants,
+  loadUser,
   auth: { user, isAuthenticated, loading },
   participants: { participants }
 }) => {
   useEffect(() => {
+    loadUser();
     getParticipants();
-  }, [getParticipants]);
+  }, [loadUser, getParticipants]);
 
   if (!isAuthenticated) {
     return <Redirect to="/" />;
-  }
-
-  if (user) {
-    const userList = user.votes.map(vote =>
-      participants.map(participant => {
-        if (participant._id === vote.participant) {
-          return (
-            <DashboardItem
-              key={vote._id}
-              participant={participant}
-              vote={vote.vote}
-            />
-          );
-        }
-      })
-    );
-    console.log(userList);
   }
 
   return loading && user === null ? (
@@ -43,7 +29,7 @@ const Dashboard = ({
       <div className="banner"></div>
       <div className="content">
         <div className="overlay">
-          <daiv className="container">
+          <div className="container">
             <h1 className="large">Welcome {user && user.name}</h1>
             {user && user.role === 'admin' && (
               <div className="btn-container">
@@ -69,7 +55,7 @@ const Dashboard = ({
                   )
                 )}
             </div>
-          </daiv>
+          </div>
         </div>
       </div>
     </div>
@@ -77,6 +63,7 @@ const Dashboard = ({
 };
 
 Dashboard.propTypes = {
+  loadUser: PropTypes.func.isRequired,
   getParticipants: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   participants: PropTypes.object.isRequired
@@ -87,4 +74,6 @@ const mapStateToProps = state => ({
   participants: state.participants
 });
 
-export default connect(mapStateToProps, { getParticipants })(Dashboard);
+export default connect(mapStateToProps, { loadUser, getParticipants })(
+  Dashboard
+);

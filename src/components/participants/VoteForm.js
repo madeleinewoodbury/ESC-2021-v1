@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { voteOnParticipant } from '../../actions/auth';
+import { voteOnParticipant } from '../../actions/participants';
 
-const VoteForm = ({ id, auth: { loading, user }, voteOnParticipant }) => {
+const VoteForm = ({
+  participant,
+  voteOnParticipant,
+  auth: { loading, user }
+}) => {
   const [formData, setFormData] = useState('');
+
   useEffect(() => {
-    const userVote = user.votes.find(vote => vote.participant === id);
-    setFormData(!userVote ? '' : userVote.vote);
-  }, [user.votes, id]);
+    if (participant !== null) {
+      console.log(participant);
+    }
+  }, [loading]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    voteOnParticipant(id, formData);
+    voteOnParticipant(participant._id, formData);
   };
 
   return (

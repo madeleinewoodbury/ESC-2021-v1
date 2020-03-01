@@ -3,7 +3,9 @@ import {
   GET_PARTICIPANTS,
   PARTICIPANT_ERROR,
   CLEAR_PARTICIPANT,
-  REMOVE_PARTICIPANT
+  REMOVE_PARTICIPANT,
+  GET_VOTE,
+  VOTE_ERROR
 } from '../actions/types';
 
 const initialState = {
@@ -23,6 +25,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case GET_PARTICIPANT:
+    case GET_VOTE:
       return {
         ...state,
         participant: payload,
@@ -37,6 +40,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case PARTICIPANT_ERROR:
+    case VOTE_ERROR:
       return {
         ...state,
         error: payload,

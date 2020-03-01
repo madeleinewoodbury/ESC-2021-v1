@@ -3,7 +3,9 @@ import {
   GET_PARTICIPANTS,
   PARTICIPANT_ERROR,
   CLEAR_PARTICIPANT,
-  REMOVE_PARTICIPANT
+  REMOVE_PARTICIPANT,
+  GET_VOTE,
+  VOTE_ERROR
 } from './types';
 import axios from 'axios';
 import { setAlert } from './alert';
@@ -121,5 +123,22 @@ export const deleteParticipant = (id, history) => async dispatch => {
         payload: { msg: err.response.statusText, status: err.response.status }
       });
     }
+  }
+};
+
+// Vote on participant
+export const voteOnParticipant = (id, vote) => async dispatch => {
+  try {
+    const res = await axios.post(`/api/participants/vote/${id}/${vote}`);
+    dispatch({
+      type: GET_VOTE,
+      payload: res.data
+    });
+    dispatch(setAlert('Vote Updated', 'success'));
+  } catch (err) {
+    dispatch({
+      type: VOTE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
   }
 };
