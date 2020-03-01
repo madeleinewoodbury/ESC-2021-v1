@@ -1,0 +1,86 @@
+.countries .banner {
+  width: 25%;
+  position: fixed;
+}
+
+.countries .content {
+  column-gap: 0px;
+  width: 75%;
+  margin-left: 25%;
+}
+
+.countries .content .container {
+  width: 100%;
+  margin: 0;
+}
+
+.countries .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.countries .card {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-bottom: 1rem;
+}
+
+.countries .card .card-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.countries .card .card-img img {
+  width: 50%;
+}
+
+.countries .card .card-content {
+  position: relative;
+  padding: 2rem;
+  padding: 0;
+}
+
+.countries .card .card-content .card-pill {
+  position: absolute;
+  top: -15px;
+}
+
+.countries .card .card-content .card-pill a {
+  background-color: #fff;
+  color: black;
+  padding: 5px 20px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.countries .card .card-content .card-pill a:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.countries .card .card-content .card-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.countries .card .card-content .card-info a {
+  font-size: 1.5em;
+  color: #fff;
+  margin: 0.25rem 0;
+  text-align: center;
+}
+
+.countries .card .card-content .card-info a:hover {
+  color: var(--primary-color);
+}
+
+.countries .card .card-content .card-info span {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}

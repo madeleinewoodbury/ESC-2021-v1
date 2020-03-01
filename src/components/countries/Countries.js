@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import { getCountries } from '../../actions/countries';
 import CountryCard from './CountryCard';
+import './Countries.css';
 
 const Countries = ({ getCountries, countries: { countries, loading } }) => {
   useEffect(() => {

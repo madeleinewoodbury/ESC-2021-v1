@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import { getParticipants } from '../../actions/participants';
 import ParticipantCard from './ParticipantCard';
+import './Participants.css';
 
 const Participants = ({
   getParticipants,

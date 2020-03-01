@@ -1,0 +1,60 @@
+.dashboard .container h1 {
+  color: #fff;
+  margin: 2rem;
+}
+
+.dashboard .container .btn-container {
+  margin: 2rem;
+}
+
+.dashboard .container .list {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
+
+.dashboard .container .list .list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 2rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 0.25rem;
+}
+
+.dashboard .container .list .list-item .item-info {
+  display: flex;
+  width: 75%;
+}
+
+.dashboard .container .list .list-item .item-info h2 {
+  color: #fff;
+}
+
+.dashboard .container .list .list-item .item-info h2:hover {
+  color: var(--primary-color);
+}
+
+.dashboard .container .list .list-item .item-info h2 span {
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+
+.dashboard .container .list .list-item .item-info img {
+  width: 50px;
+  margin-right: 1rem;
+}
+
+.dashboard .container .list .list-item .item-vote {
+  margin-right: 3rem;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.dashboard .container .list .list-item .item-vote h4 span {
+  margin-left: 0.2rem;
+  font-size: 1.2rem;
+}

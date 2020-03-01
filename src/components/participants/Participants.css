@@ -1,0 +1,81 @@
+.participants .banner {
+  width: 25%;
+  position: fixed;
+}
+
+.participants .content {
+  column-gap: 0px;
+  width: 75%;
+  margin-left: 25%;
+}
+
+.participants .content .container {
+  width: 100%;
+  margin: 0;
+}
+
+.participants .content .container .btn-container {
+  margin: 1.5rem 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.participants .card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.participants .card {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.participants .card .card-img img {
+  width: 100%;
+}
+
+.participants .card .card-content {
+  position: relative;
+  padding: 2rem;
+}
+
+.participants .card .card-content .card-pill {
+  position: absolute;
+  top: -15px;
+}
+
+.participants .card .card-content .card-pill a {
+  background-color: #fff;
+  color: black;
+  padding: 5px 20px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.participants .card .card-content .card-pill a:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.participants .card .card-content .card-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.participants .card .card-content .card-info a {
+  font-size: 1.5em;
+  color: #fff;
+  margin: 0.25rem 0;
+}
+
+.participants .card .card-content .card-info a:hover {
+  color: var(--primary-color);
+}
+
+.participants .card .card-content .card-info span {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}

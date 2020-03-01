@@ -6,6 +6,7 @@ import Spinner from '../layout/Spinner';
 import DashboardItem from './DashboardItem';
 import { loadUser } from '../../actions/auth';
 import { getParticipants, getParticipant } from '../../actions/participants';
+import './Dashboard.css';
 
 const Dashboard = ({
   getParticipants,

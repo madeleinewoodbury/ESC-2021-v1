@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loadUser } from '../../actions/auth';
 import { getParticipant, voteOnParticipant } from '../../actions/participants';
-import VoteForm from './VoteForm';
+import './Postcard.css';
 
 const ParticipantPostcard = ({
   getParticipant,
   voteOnParticipant,
-  loadUser,
   participants: { participant, loading },
   auth: { isAuthenticated, user },
   match
@@ -131,7 +129,6 @@ const ParticipantPostcard = ({
 ParticipantPostcard.propTypes = {
   voteOnParticipant: PropTypes.func.isRequired,
   getParticipant: PropTypes.func.isRequired,
-  loadUser: PropTypes.func.isRequired,
   participants: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -143,6 +140,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   voteOnParticipant,
-  getParticipant,
-  loadUser
+  getParticipant
 })(ParticipantPostcard);

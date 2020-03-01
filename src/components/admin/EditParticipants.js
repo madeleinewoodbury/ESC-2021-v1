@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getParticipants } from '../../actions/participants';
 import ParticipantItem from './ParticipantItem';
+import './Admin.css';
 
 const EditParticipants = ({
   auth: { user, isAuthenticated },

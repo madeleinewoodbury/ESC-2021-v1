@@ -3,6 +3,7 @@ import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import { getCountry } from '../../actions/countries';
 import PropTypes from 'prop-types';
+import './Postcard.css';
 
 const CountryPostcard = ({
   getCountry,

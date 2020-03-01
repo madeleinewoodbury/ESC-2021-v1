@@ -4,6 +4,7 @@ import logo from '../../logo-white.png';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import './Navbar.css';
 
 const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
   const authLinks = (

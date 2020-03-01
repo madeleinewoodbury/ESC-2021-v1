@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getCountries } from '../../actions/countries';
 import CountryItem from './CountryItem';
+import './Admin.css';
 
 const EditCountries = ({
   auth: { user, isAuthenticated },
