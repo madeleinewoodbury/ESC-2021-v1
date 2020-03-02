@@ -79,3 +79,40 @@
   font-size: 0.9rem;
   color: var(--secondary-color);
 }
+
+@media screen and (max-width: 1200px) {
+  .participants .card {
+    width: 33.3%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .participants .content {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .participants .content .container .btn-container {
+    flex-direction: column;
+  }
+
+  .participants .content .container .btn-container .btn {
+    width: 100%;
+    display: block;
+    opacity: 0.8;
+    padding: 0.4rem 0;
+    border-radius: 0;
+  }
+
+  .participants .card {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .participants .card {
+    width: 100%;
+  }
+}

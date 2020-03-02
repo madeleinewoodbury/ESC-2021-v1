@@ -34,15 +34,28 @@
 
 .postcard .postcard-top .postcard-hero {
   width: 70%;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .postcard .postcard-top .postcard-hero .postcard-img {
   width: 100%;
-  /* height: 100%; */
+  height: auto;
 }
 
-.postcard .postcard-top .postcard-hero .postcard-flag {
+.postcard .postcard-top .postcard-hero .postcard-title {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 1rem 0;
+  margin-top: -5px;
+  background-color: var(--dark-color);
+  width: 100%;
+  height: 100px;
+}
+
+.postcard .postcard-top .postcard-hero .postcard-title .postcard-flag {
   position: absolute;
   bottom: 30px;
   left: 40px;
@@ -50,30 +63,16 @@
   width: 200px;
 }
 
-.postcard .postcard-top .postcard-hero .postcard-title {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  bottom: 2px;
-  left: 0;
-  padding: 1rem 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: 100px;
-}
-
 .postcard .postcard-top .postcard-hero .postcard-title h2 {
-  margin-right: 100px;
   font-size: 2rem;
+  margin-left: 200px;
   color: #fff;
 }
 
 .postcard .postcard-top .postcard-info {
   width: 30%;
   background-color: #ededf0;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
 }
 
 .postcard .postcard-top .postcard-info .postcard-list span {
@@ -87,6 +86,11 @@
 .postcard .postcard-top .postcard-info div h3 {
   margin: 0;
   padding-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.postcard .postcard-top .postcard-info div span {
+  font-size: 0.9rem;
 }
 
 .postcard .postcard-top .postcard-info .user-votes h3 {
@@ -138,4 +142,49 @@
 .postcard .postcard-content iframe {
   width: 700px;
   height: 400px;
+}
+
+@media screen and (max-width: 1024px) {
+  .postcard-container .banner {
+    display: none;
+  }
+
+  .postcard {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .postcard .postcard-top {
+    flex-direction: column;
+  }
+
+  .postcard .postcard-top .postcard-hero {
+    width: 100%;
+  }
+
+  .postcard .postcard-top .postcard-info {
+    width: 100%;
+  }
+
+  .postcard .postcard-top .postcard-info div h3 {
+    margin: 0;
+  }
+
+  .postcard .postcard-content .postcard-bio p {
+    font-size: 1.1rem;
+  }
+
+  .postcard .postcard-content iframe {
+    width: 600px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .postcard .postcard-content iframe {
+    width: 400px;
+    height: 200px;
+  }
 }

@@ -40,18 +40,22 @@ const ParticipantPostcard = ({
       <div className="postcard">
         <div className="postcard-top">
           <div className="postcard-hero">
-            <img
-              className="postcard-img"
-              src={participant.image}
-              alt={participant.artist}
-            />
-            <img
-              className="postcard-flag"
-              src={participant.flag}
-              alt={participant.country}
-            />
-            <div className="postcard-title">
-              <h2>{participant.artist}</h2>
+            <div>
+              <img
+                className="postcard-img"
+                src={participant.image}
+                alt={participant.artist}
+              />
+            </div>
+            <div>
+              <div className="postcard-title">
+                <h2>{participant.artist}</h2>
+                <img
+                  className="postcard-flag"
+                  src={participant.flag}
+                  alt={participant.country}
+                />
+              </div>
             </div>
           </div>
           <div className="postcard-info">

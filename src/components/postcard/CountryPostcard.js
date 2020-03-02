@@ -25,18 +25,22 @@ const CountryPostcard = ({
             <div className="postcard">
               <div className="postcard-top">
                 <div className="postcard-hero">
-                  <img
-                    className="postcard-img"
-                    src={country.image}
-                    alt={country.name}
-                  />
-                  <img
-                    className="postcard-flag"
-                    src={country.flag}
-                    alt={country.name}
-                  />
-                  <div className="postcard-title">
-                    <h2>{country.name}</h2>
+                  <div>
+                    <img
+                      className="postcard-img"
+                      src={country.image}
+                      alt={country.name}
+                    />
+                  </div>
+                  <div>
+                    <div className="postcard-title">
+                      <h2>{country.name}</h2>
+                      <img
+                        className="postcard-flag"
+                        src={country.flag}
+                        alt={country.name}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="postcard-info">

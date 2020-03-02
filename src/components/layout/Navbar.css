@@ -21,6 +21,20 @@
 .navbar .logo img {
   width: 100px;
   margin: 0.5rem;
+  position: absolute;
+}
+
+.navbar .menu-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: #fff;
+  display: none;
+}
+
+.navbar .menu-checkbox {
+  display: none;
 }
 
 .navbar .links-container {
@@ -56,4 +70,40 @@
 
 .navbar .nav-links li a.active {
   color: var(--secondary-color);
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar .menu-toggle {
+    display: initial;
+    cursor: pointer;
+  }
+
+  .navbar .menu-toggle:hover {
+    color: var(--secondary-color);
+  }
+
+  .navbar .links-container {
+    flex-direction: column;
+    display: none;
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    text-align: center;
+    margin: 2rem 0 0 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 0.5rem 0;
+  }
+
+  .navbar .nav-links:last-of-type {
+    margin: 0;
+  }
+
+  .navbar .nav-links li {
+    padding: 0.5rem 0;
+  }
+
+  #toggle:checked + .links-container {
+    display: block;
+  }
 }
