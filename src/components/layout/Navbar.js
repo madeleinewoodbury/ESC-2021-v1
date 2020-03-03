@@ -90,8 +90,8 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
               </Link>
             </li>
             <li>
-              <Link onClick={e => handleClick(e)} to="#">
-                Competition
+              <Link onClick={e => handleClick(e)} to="/competitions">
+                Competitions
               </Link>
             </li>
             <li>

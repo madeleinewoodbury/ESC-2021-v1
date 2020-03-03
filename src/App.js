@@ -15,14 +15,19 @@ import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Participants from './components/participants/Participants';
 import Countries from './components/countries/Countries';
+import Competitions from './components/competitions/Competitions';
 import ParticipantPostcard from './components/postcard/ParticipantPostcard';
 import CountryPostcard from './components/postcard/CountryPostcard';
+import CompetitionPostcard from './components/postcard/CompetitionPostcard';
 import EditCountries from './components/admin/EditCountries';
 import EditParticipants from './components/admin/EditParticipants';
+import EditCompetitions from './components/admin/EditCompetitions';
 import AddCountry from './components/admin/AddCountry';
 import AddParticipant from './components/admin/AddParticipant';
+import AddCompetition from './components/admin/AddCompetition';
 import EditCountry from './components/admin/EditCountry';
 import EditParticipant from './components/admin/EditParticipant';
+import EditCompetition from './components/admin/EditCompetition';
 import './App.css';
 
 if (localStorage.token) {
@@ -46,12 +51,18 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/participants" component={Participants} />
             <Route exact path="/countries" component={Countries} />
+            <Route exact path="/competitions" component={Competitions} />
             <Route
               exact
               path="/participants/:id"
               component={ParticipantPostcard}
             />
             <Route exact path="/countries/:id" component={CountryPostcard} />
+            <Route
+              exact
+              path="/competitions/:id"
+              component={CompetitionPostcard}
+            />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute
               exact
@@ -63,11 +74,21 @@ const App = () => {
               path="/edit-participants"
               component={EditParticipants}
             />
+            <PrivateRoute
+              exact
+              path="/edit-competitions"
+              component={EditCompetitions}
+            />
             <PrivateRoute exact path="/add-country" component={AddCountry} />
             <PrivateRoute
               exact
               path="/add-participant"
               component={AddParticipant}
+            />
+            <PrivateRoute
+              exact
+              path="/add-competition"
+              component={AddCompetition}
             />
             <PrivateRoute
               exact
@@ -78,6 +99,11 @@ const App = () => {
               exact
               path="/edit-participant/:id"
               component={EditParticipant}
+            />
+            <PrivateRoute
+              exact
+              path="/edit-competition/:id"
+              component={EditCompetition}
             />
           </Switch>
         </Fragment>

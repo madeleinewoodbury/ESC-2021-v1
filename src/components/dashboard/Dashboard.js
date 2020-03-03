@@ -40,6 +40,9 @@ const Dashboard = ({
                 <Link to="/edit-participants" className="btn btn-secondary">
                   Edit Participants
                 </Link>
+                <Link to="/edit-competitions" className="btn btn-secondary">
+                  Edit Competitions
+                </Link>
               </div>
             )}
             {user && user.votes.length === 0 ? (
