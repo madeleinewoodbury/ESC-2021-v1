@@ -1,4 +1,3 @@
-/* padding: 0.4rem 0; */
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../logo-white.png';
@@ -6,33 +5,36 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import './Navbar.css';
-import { VOTE_ERROR } from '../../actions/types';
 
 const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
   const [viewMenu, toggleViewMenu] = useState(false);
 
   const handleLogout = e => {
-    toggleViewMenu(!viewMenu);
+    window.innerWidth < 1024 && toggleViewMenu(!viewMenu);
     logout();
   };
+
+  const handleClick = e => {
+    window.innerWidth < 1024 && toggleViewMenu(!viewMenu);
+  };
+
+  console.log(window.innerWidth);
 
   const authLinks = (
     <ul className="nav-links">
       <li>
         |
-        <Link
-          onClick={e => toggleViewMenu(!viewMenu)}
-          to="/dashboard"
-          title="Dashboard"
-        >
+        <Link onClick={e => handleClick(e)} to="/dashboard" title="Dashboard">
           <i className="fas fa-user"></i>
-          <span>{user && user.name.trim().split(' ')[0]}</span>
+          <span className="hide-md">
+            {user && user.name.trim().split(' ')[0]}
+          </span>
         </Link>
       </li>
       <li>
         <Link onClick={e => handleLogout(e)} to="#!">
           <i className="fas fa-sign-out-alt"></i>
-          <span>Logout</span>
+          <span className="hide-md">Logout</span>
         </Link>
       </li>
     </ul>
@@ -41,12 +43,12 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul className="nav-links">
       <li>
-        <Link onClick={e => toggleViewMenu(!viewMenu)} to="/register">
+        <Link onClick={e => handleClick(e)} to="/register">
           Register
         </Link>
       </li>
       <li>
-        <Link onClick={e => toggleViewMenu(!viewMenu)} to="/login">
+        <Link onClick={e => handleClick(e)} to="/login">
           Login
         </Link>
       </li>
@@ -68,36 +70,32 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
           type="checkbox"
           id="toggle"
           checked={viewMenu}
-          onChange={e => toggleViewMenu(!viewMenu)}
+          onClick={e => handleClick(e)}
         />
         <div className="links-container menu">
           <ul className="nav-links">
             <li>
-              <Link
-                onClick={e => toggleViewMenu(!viewMenu)}
-                className="active"
-                to="/"
-              >
+              <Link onClick={e => handleClick(e)} to="/">
                 Home
               </Link>
             </li>
             <li>
-              <Link onClick={e => toggleViewMenu(!viewMenu)} to="/participants">
+              <Link onClick={e => handleClick(e)} to="/participants">
                 Participants
               </Link>
             </li>
             <li>
-              <Link onClick={e => toggleViewMenu(!viewMenu)} to="/countries">
+              <Link onClick={e => handleClick(e)} to="/countries">
                 Countries
               </Link>
             </li>
             <li>
-              <Link onClick={e => toggleViewMenu(!viewMenu)} to="#">
+              <Link onClick={e => handleClick(e)} to="#">
                 Competition
               </Link>
             </li>
             <li>
-              <Link onClick={e => toggleViewMenu(!viewMenu)} to="#">
+              <Link onClick={e => handleClick(e)} to="#">
                 About
               </Link>
             </li>

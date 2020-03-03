@@ -1,16 +1,21 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Countdown from '../utils/Countdown';
 
-const Landing = ({ isAuthenticated }) => {
-  if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
-  }
+const Landing = () => {
   return (
     <div className="landing background">
       <div className="banner"></div>
-      <div className="content content-bg">{/* <h1>Landing</h1> */}</div>
+      <div className="content">
+        <div className="overlay">
+          <div className="container">
+            <Countdown
+              timeTillDate={new Date('May 16, 2020 14:00:00').getTime()}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

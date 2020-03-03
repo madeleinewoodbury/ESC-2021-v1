@@ -18,10 +18,12 @@ const CountryItem = ({ flag, name, id, deleteCountry, history }) => {
           onClick={e => deleteCountry(id, history)}
           className="btn btn-danger"
         >
-          Delete
+          <i class="far fa-trash-alt"></i>
+          <span className="hide-sm"> Delete</span>
         </button>
         <Link to={`/edit-country/${id}`} className="btn btn-secondary">
-          Edit
+          <i class="far fa-edit"></i>
+          <span className="hide-sm"> Edit</span>
         </Link>
       </div>
     </div>

@@ -15,7 +15,7 @@ const DashboardItem = ({
         <Link to={`/participants/${_id}`}>
           <h2>
             {artist}{' '}
-            <span>
+            <span className="hide-sm">
               <em>"{song}"</em>
             </span>
           </h2>

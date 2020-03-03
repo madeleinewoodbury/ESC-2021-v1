@@ -28,7 +28,7 @@ const Register = ({ register, isAuthenticated }) => {
   const { name, email, password, password2 } = formData;
 
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (

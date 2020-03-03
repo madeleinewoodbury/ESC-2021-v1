@@ -28,7 +28,8 @@
 
 .admin .container .list .list-item .item-info {
   display: flex;
-  width: 75%;
+  align-items: center;
+  width: 70%;
 }
 
 .admin .container .list .list-item .item-info h2 {
@@ -51,6 +52,39 @@
 }
 
 .admin .container .list .list-item .item-action {
-  margin-right: 3rem;
+  margin-right: 1rem;
   display: flex;
+  width: 30%;
+}
+
+@media screen and (max-width: 1024px) {
+  .admin .container .list {
+    width: 100%;
+  }
+
+  .admin .container .list .list-item {
+    margin: 0;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .admin .container .list .list-item .item-action {
+    margin-right: 0;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .admin .container h1 {
+    font-size: 2rem;
+  }
+
+  .admin .container .btn-container {
+    position: absolute;
+    top: 2rem;
+    right: 0.5rem;
+  }
+
+  .admin .container .list .list-item .item-info h2 {
+    font-size: 1rem;
+  }
 }

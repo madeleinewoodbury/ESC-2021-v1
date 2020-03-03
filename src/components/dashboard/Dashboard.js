@@ -31,7 +31,7 @@ const Dashboard = ({
       <div className="content">
         <div className="overlay">
           <div className="container">
-            <h1 className="large">Welcome {user && user.name}</h1>
+            <h1 className="large">Welcome {user && user.name.split(' ')[0]}</h1>
             {user && user.role === 'admin' && (
               <div className="btn-container">
                 <Link to="/edit-countries" className="btn btn-secondary">
@@ -42,20 +42,31 @@ const Dashboard = ({
                 </Link>
               </div>
             )}
-            <div className="list">
-              {user &&
-                user.votes.map(vote =>
-                  participants.map(participant =>
-                    participant._id === vote.participant ? (
-                      <DashboardItem
-                        key={vote._id}
-                        participant={participant}
-                        vote={vote.vote}
-                      />
-                    ) : null
-                  )
-                )}
-            </div>
+            {user && user.votes.length === 0 ? (
+              <div className="no-votes">
+                <p className="lead">
+                  You have not voted on any participants yet...
+                </p>
+                <Link to="/participants" className="btn btn-primary">
+                  View Participants
+                </Link>
+              </div>
+            ) : (
+              <div className="list">
+                {user &&
+                  user.votes.map(vote =>
+                    participants.map(participant =>
+                      participant._id === vote.participant ? (
+                        <DashboardItem
+                          key={vote._id}
+                          participant={participant}
+                          vote={vote.vote}
+                        />
+                      ) : null
+                    )
+                  )}
+              </div>
+            )}
           </div>
         </div>
       </div>

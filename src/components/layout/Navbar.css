@@ -31,6 +31,7 @@
   font-size: 2rem;
   color: #fff;
   display: none;
+  z-index: 100;
 }
 
 .navbar .menu-checkbox {
@@ -40,7 +41,8 @@
 .navbar .links-container {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
+  margin-left: 200px;
 }
 
 .navbar .nav-links {
@@ -85,12 +87,16 @@
   .navbar .links-container {
     flex-direction: column;
     display: none;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   .navbar .nav-links {
     flex-direction: column;
-    text-align: center;
-    margin: 2rem 0 0 0;
+    text-align: right;
+    margin: 4rem 0 0 0;
     background-color: rgba(0, 0, 0, 0.9);
     padding: 0.5rem 0;
   }
@@ -100,7 +106,7 @@
   }
 
   .navbar .nav-links li {
-    padding: 0.5rem 0;
+    padding: 0.5rem 1rem;
   }
 
   #toggle:checked + .links-container {

@@ -21,7 +21,7 @@ const Login = ({ login, isAuthenticated }) => {
   const { email, password } = formData;
 
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (

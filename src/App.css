@@ -78,7 +78,7 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* Utilities */
@@ -95,7 +95,7 @@ li {
 }
 
 .lead {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin-bottom: 1rem;
 }
 
@@ -251,6 +251,10 @@ button {
     width: 75%;
     margin-left: 25%;
   }
+
+  .hide-md {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -261,5 +265,11 @@ button {
   .background .content {
     width: 100%;
     margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .hide-sm {
+    display: none;
   }
 }
