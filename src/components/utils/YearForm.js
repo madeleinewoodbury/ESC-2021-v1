@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './YearForm.css';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getCompetitions } from '../../actions/competitions';
 
-const YearForm = ({ year, handleChange }) => {
+const YearForm = ({
+  year,
+  handleChange,
+  competitions: { competitions },
+  getCompetitions
+}) => {
+  useEffect(() => {
+    getCompetitions();
+  }, [getCompetitions]);
   return (
     <form className="year-form">
       <div className="form-group">
         <select name="showYear" value={year} onChange={e => handleChange(e)}>
-          <option value={2020}>2020</option>
-          <option value={2019}>2019</option>
+          {competitions &&
+            competitions.map(comp => (
+              <option value={comp.year}>{comp.year}</option>
+            ))}
         </select>
       </div>
     </form>
   );
 };
 
-export default YearForm;
+YearForm.propTypes = {
+  getCompetitions: PropTypes.func.isRequired,
+  competitions: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  competitions: state.competitions
+});
+
+export default connect(mapStateToProps, { getCompetitions })(YearForm);

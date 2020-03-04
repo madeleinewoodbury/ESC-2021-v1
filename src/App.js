@@ -28,6 +28,7 @@ import AddCompetition from './components/admin/AddCompetition';
 import EditCountry from './components/admin/EditCountry';
 import EditParticipant from './components/admin/EditParticipant';
 import EditCompetition from './components/admin/EditCompetition';
+import Scoreboard from './components/scoreboard/Scoreboard';
 import './App.css';
 
 if (localStorage.token) {
@@ -104,6 +105,11 @@ const App = () => {
               exact
               path="/edit-competition/:id"
               component={EditCompetition}
+            />
+            <PrivateRoute
+              exact
+              path="/scoreboard/:year"
+              component={Scoreboard}
             />
           </Switch>
         </Fragment>

@@ -1,29 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const DashboardItem = ({
-  vote,
-  participant: { _id, flag, country, image, artist, song }
+
+const ScoreboardItem = ({
+  participant: { _id, emoji, country, countryId, artist, song, points }
 }) => {
   return (
     <div className="list-item">
       <div className="item-info">
-        <img src={flag} alt={country} />
+        <Link to={`/countries/${countryId}`}>
+          <h4>
+            {emoji} {country}
+          </h4>
+        </Link>
         <Link to={`/participants/${_id}`}>
-          <h2>
+          <h4 className="artist">
             {artist}{' '}
             <span className="hide-sm">
               <em>"{song}"</em>
             </span>
-          </h2>
+          </h4>
         </Link>
       </div>
       <div className="item-vote">
         <h4>
-          {vote} <span>points</span>
+          {points} <span>points</span>
         </h4>
       </div>
     </div>
   );
 };
 
-export default DashboardItem;
+export default ScoreboardItem;

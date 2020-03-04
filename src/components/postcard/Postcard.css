@@ -87,10 +87,17 @@
   width: 30%;
   background-color: #ededf0;
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+  position: relative;
 }
 
 .postcard .postcard-top .postcard-info .postcard-list span {
   display: block;
+}
+
+.postcard .postcard-top .postcard-info .results {
+  position: absolute;
+  bottom: 0;
+  margin: 1rem 0;
 }
 
 .postcard .postcard-top .postcard-info div {
@@ -180,6 +187,10 @@
 
   .postcard .postcard-top .postcard-info {
     width: 100%;
+  }
+
+  .postcard .postcard-top .postcard-info .results {
+    position: initial;
   }
 
   .postcard .postcard-top .postcard-info div h3 {

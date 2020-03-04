@@ -3,18 +3,22 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addParticipant } from '../../actions/participants';
 import { getCountries } from '../../actions/countries';
+import { getCompetitions } from '../../actions/competitions';
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 
 const AddParticipant = ({
   addParticipant,
   getCountries,
+  getCompetitions,
   countries: { countries, loading },
+  competitions: { competitions },
   history
 }) => {
   useEffect(() => {
     getCountries();
-  }, [getCountries]);
+    getCompetitions();
+  }, [getCountries, getCompetitions]);
 
   const [formData, setFormData] = useState({
     country: '',
@@ -99,13 +103,16 @@ const AddParticipant = ({
                   />
                 </div>
                 <div className="form-group">
-                  <input
-                    type="number"
-                    placeholder="Year"
+                  <select
                     name="year"
                     value={year}
                     onChange={e => handleChange(e)}
-                  />
+                  >
+                    <option value={0}>* Select a Year</option>
+                    {competitions.map(comp => (
+                      <option value={comp.year}>{comp.year}</option>
+                    ))}
+                  </select>
                 </div>
                 <div className="form-group">
                   <input
@@ -216,13 +223,18 @@ const AddParticipant = ({
 AddParticipant.propTypes = {
   addParticipant: PropTypes.func.isRequired,
   getCountries: PropTypes.func.isRequired,
-  countries: PropTypes.object.isRequired
+  getCompetitions: PropTypes.func.isRequired,
+  countries: PropTypes.object.isRequired,
+  competitions: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  countries: state.countries
+  countries: state.countries,
+  competitions: state.competitions
 });
 
-export default connect(mapStateToProps, { addParticipant, getCountries })(
-  withRouter(AddParticipant)
-);
+export default connect(mapStateToProps, {
+  addParticipant,
+  getCountries,
+  getCompetitions
+})(withRouter(AddParticipant));

@@ -115,7 +115,8 @@ export const deleteParticipant = (id, history) => async dispatch => {
         type: REMOVE_PARTICIPANT
       });
       dispatch(setAlert('Participant deleted', 'success'));
-      // Redirect back to dashboard
+      dispatch(getParticipants());
+      // Redirect back to edit-page
       history.push('/edit-participants');
     } catch (err) {
       console.log(err);
@@ -124,6 +125,23 @@ export const deleteParticipant = (id, history) => async dispatch => {
         payload: { msg: err.response.statusText, status: err.response.status }
       });
     }
+  }
+};
+
+// Get participant by year
+export const getParticipantsByYear = year => async dispatch => {
+  try {
+    const res = await axios.get(`/api/participants/year/${year}`);
+
+    dispatch({
+      type: GET_PARTICIPANTS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PARTICIPANT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
   }
 };
 

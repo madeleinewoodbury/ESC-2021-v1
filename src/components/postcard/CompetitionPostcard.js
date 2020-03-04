@@ -65,6 +65,14 @@ const CountryPostcard = ({
                     <h3>Winner</h3>
                     <span>{competition.winner}</span>
                   </div>
+                  <div className="results">
+                    <Link
+                      to={`/scoreboard/${competition.year}`}
+                      className="btn btn-dark"
+                    >
+                      View Results
+                    </Link>
+                  </div>
                 </div>
               </div>
 

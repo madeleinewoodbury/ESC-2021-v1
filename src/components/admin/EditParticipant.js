@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateParticipant, getParticipant } from '../../actions/participants';
 import { getCountries } from '../../actions/countries';
+import { getCompetitions } from '../../actions/competitions';
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 
@@ -10,7 +11,9 @@ const EditParticipant = ({
   updateParticipant,
   getParticipant,
   getCountries,
+  getCompetitions,
   countries: { countries },
+  competitions: { competitions },
   participants: { participant, loading },
   history,
   match
@@ -33,7 +36,9 @@ const EditParticipant = ({
 
   useEffect(() => {
     getCountries();
+    getCompetitions();
     getParticipant(match.params.id);
+
     if (participant !== null) {
       setFormData({
         country: loading || !participant.country ? '' : participant.country,
@@ -54,7 +59,7 @@ const EditParticipant = ({
         points: loading || !participant.points ? '' : participant.points
       });
     }
-  }, [loading, getCountries, getParticipant, match.params.id]);
+  }, [loading, getCountries, getCompetitions, getParticipant, match.params.id]);
 
   const handleChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -123,13 +128,16 @@ const EditParticipant = ({
                   />
                 </div>
                 <div className="form-group">
-                  <input
-                    type="number"
-                    placeholder="Year"
+                  <select
                     name="year"
                     value={year}
                     onChange={e => handleChange(e)}
-                  />
+                  >
+                    <option value={0}>* Select a Year</option>
+                    {competitions.map(comp => (
+                      <option value={comp.year}>{comp.year}</option>
+                    ))}
+                  </select>
                 </div>
                 <div className="form-group">
                   <input
@@ -241,17 +249,20 @@ EditParticipant.propTypes = {
   updateParticipant: PropTypes.func.isRequired,
   getParticipant: PropTypes.func.isRequired,
   getCountries: PropTypes.func.isRequired,
+  getCompetitions: PropTypes.func.isRequired,
   countries: PropTypes.object.isRequired,
   participants: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   countries: state.countries,
+  competitions: state.competitions,
   participants: state.participants
 });
 
 export default connect(mapStateToProps, {
   updateParticipant,
   getParticipant,
-  getCountries
+  getCountries,
+  getCompetitions
 })(withRouter(EditParticipant));
