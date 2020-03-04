@@ -5,7 +5,8 @@ import {
   CLEAR_PARTICIPANT,
   REMOVE_PARTICIPANT,
   GET_VOTE,
-  VOTE_ERROR
+  VOTE_ERROR,
+  SET_YEAR
 } from './types';
 import axios from 'axios';
 import { setAlert } from './alert';
@@ -141,4 +142,12 @@ export const voteOnParticipant = (id, vote) => async dispatch => {
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
+};
+
+// Set year
+export const setShowYear = year => async dispatch => {
+  dispatch({
+    type: SET_YEAR,
+    payload: year
+  });
 };

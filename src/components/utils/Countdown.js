@@ -12,6 +12,7 @@ const Countdown = ({ timeTillDate }) => {
       const hours = Math.floor(
         (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       );
+
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
@@ -22,6 +23,9 @@ const Countdown = ({ timeTillDate }) => {
 
       setTimeLeft({ days, hours, minutes, seconds });
     }, 1000);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   const { days, hours, minutes, seconds } = timeLeft;

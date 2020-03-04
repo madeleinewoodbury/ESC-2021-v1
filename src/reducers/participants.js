@@ -5,12 +5,14 @@ import {
   CLEAR_PARTICIPANT,
   REMOVE_PARTICIPANT,
   GET_VOTE,
-  VOTE_ERROR
+  VOTE_ERROR,
+  SET_YEAR
 } from '../actions/types';
 
 const initialState = {
   participants: [],
   participant: null,
+  showYear: 2020,
   loading: true,
   error: {}
 };
@@ -30,6 +32,11 @@ export default function(state = initialState, action) {
         ...state,
         participant: payload,
         loading: false
+      };
+    case SET_YEAR:
+      return {
+        ...state,
+        showYear: payload
       };
     case CLEAR_PARTICIPANT:
     case REMOVE_PARTICIPANT:

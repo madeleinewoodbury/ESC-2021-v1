@@ -2,13 +2,15 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
-import { getParticipants } from '../../actions/participants';
+import { getParticipants, setShowYear } from '../../actions/participants';
 import ParticipantCard from './ParticipantCard';
+import YearForm from '../utils/YearForm';
 import './Participants.css';
 
 const Participants = ({
   getParticipants,
-  participants: { participants, loading }
+  setShowYear,
+  participants: { participants, loading, showYear }
 }) => {
   const [show, setShow] = useState(1);
   const activeClass = 'btn btn-light active';
@@ -17,6 +19,11 @@ const Participants = ({
   useEffect(() => {
     getParticipants();
   }, [getParticipants]);
+
+  const handleChange = e => {
+    setShowYear(Number(e.target.value));
+  };
+
   return loading ? (
     <Spinner />
   ) : (
@@ -26,6 +33,7 @@ const Participants = ({
         <div className="content">
           <div className="overlay">
             <div className="container">
+              <YearForm year={showYear} handleChange={handleChange} />
               <div className="btn-container">
                 <button
                   onClick={e => setShow(1)}
@@ -54,15 +62,20 @@ const Participants = ({
               </div>
               <div className="card-container">
                 {show === 1 &&
-                  participants.map(participant => (
-                    <ParticipantCard
-                      key={participant.id}
-                      participant={participant}
-                    />
-                  ))}
+                  participants.map(participant =>
+                    participant.year == showYear ? (
+                      <ParticipantCard
+                        key={participant.id}
+                        participant={participant}
+                      />
+                    ) : null
+                  )}
                 {show === 2 &&
                   participants.map(participant => {
-                    if (participant.semifinal === 'First Semifinal') {
+                    if (
+                      participant.semifinal === 'First Semifinal' &&
+                      participant.year == showYear
+                    ) {
                       return (
                         <ParticipantCard
                           key={participant.id}
@@ -75,7 +88,10 @@ const Participants = ({
                   })}
                 {show === 3 &&
                   participants.map(participant => {
-                    if (participant.semifinal === 'Second Semifinal') {
+                    if (
+                      participant.semifinal === 'Second Semifinal' &&
+                      participant.year == showYear
+                    ) {
                       return (
                         <ParticipantCard
                           key={participant.id}
@@ -88,7 +104,7 @@ const Participants = ({
                   })}
                 {show === 4 &&
                   participants.map(participant => {
-                    if (participant.final) {
+                    if (participant.final && participant.year == showYear) {
                       return (
                         <ParticipantCard
                           key={participant.id}
@@ -110,10 +126,13 @@ const Participants = ({
 
 Participants.propTypes = {
   getParticipants: PropTypes.func.isRequired,
+  setShowYear: PropTypes.func.isRequired,
   participants: PropTypes.array.isRequired
 };
 const mapStateToProps = state => ({
   participants: state.participants
 });
 
-export default connect(mapStateToProps, { getParticipants })(Participants);
+export default connect(mapStateToProps, { getParticipants, setShowYear })(
+  Participants
+);

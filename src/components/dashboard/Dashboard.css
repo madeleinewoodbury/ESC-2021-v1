@@ -29,6 +29,30 @@
   padding: 0.25rem;
 }
 
+.dashboard .container .list .list-item:first-of-type {
+  border-bottom: 4px solid var(--secondary-color);
+  padding: 0 0.25rem;
+  align-items: baseline;
+}
+
+.dashboard .container .list .list-item .item-title {
+  display: flex;
+}
+
+.dashboard .container .list .list-item .item-title h2 {
+  color: #fff;
+  font-size: 2rem;
+  padding-bottom: 0;
+}
+
+.dashboard .container .list .list-item:first-of-type .item-vote {
+  margin-right: 1.5rem;
+}
+
+.dashboard .container .list .list-item:first-of-type .item-vote i {
+  margin-left: 0.2rem;
+}
+
 .dashboard .container .list .list-item .item-info {
   display: flex;
   align-items: center;

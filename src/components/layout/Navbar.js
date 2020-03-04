@@ -4,10 +4,12 @@ import logo from '../../logo-white.png';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import YearForm from '../utils/YearForm';
 import './Navbar.css';
 
 const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
   const [viewMenu, toggleViewMenu] = useState(false);
+  const [showYear, setShowYear] = useState(2020);
 
   const handleLogout = e => {
     window.innerWidth < 1024 && toggleViewMenu(!viewMenu);
@@ -17,8 +19,6 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
   const handleClick = e => {
     window.innerWidth < 1024 && toggleViewMenu(!viewMenu);
   };
-
-  console.log(window.innerWidth);
 
   const authLinks = (
     <ul className="nav-links">
@@ -70,7 +70,7 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
           type="checkbox"
           id="toggle"
           checked={viewMenu}
-          onClick={e => handleClick(e)}
+          onChange={e => handleClick(e)}
         />
         <div className="links-container menu">
           <ul className="nav-links">

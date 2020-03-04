@@ -1,19 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import DashboardItem from './DashboardItem';
 import { loadUser } from '../../actions/auth';
-import { getParticipants, getParticipant } from '../../actions/participants';
+import { getParticipants, setShowYear } from '../../actions/participants';
+import YearForm from '../utils/YearForm';
 import './Dashboard.css';
 
 const Dashboard = ({
   getParticipants,
+  setShowYear,
   loadUser,
   auth: { user, isAuthenticated, loading },
-  participants: { participants }
+  participants: { participants, showYear }
 }) => {
+  const [sortDown, toggleSortDown] = useState(true);
   useEffect(() => {
     loadUser();
     getParticipants();
@@ -22,6 +25,31 @@ const Dashboard = ({
   if (!isAuthenticated) {
     return <Redirect to="/" />;
   }
+
+  const handleChange = e => {
+    setShowYear(Number(e.target.value));
+  };
+
+  const getUserVotes = () => {
+    if (sortDown) {
+      user.votes.sort((a, b) => (a.vote < b.vote ? 1 : -1));
+    } else {
+      user.votes.sort((a, b) => (a.vote > b.vote ? 1 : -1));
+    }
+
+    let userVotes = user.votes.map(vote =>
+      participants.map(participant =>
+        participant.year == showYear && participant._id === vote.participant ? (
+          <DashboardItem
+            key={vote._id}
+            participant={participant}
+            vote={vote.vote}
+          />
+        ) : null
+      )
+    );
+    return userVotes;
+  };
 
   return loading && user === null ? (
     <Spinner />
@@ -45,6 +73,7 @@ const Dashboard = ({
                 </Link>
               </div>
             )}
+
             {user && user.votes.length === 0 ? (
               <div className="no-votes">
                 <p className="lead">
@@ -56,18 +85,29 @@ const Dashboard = ({
               </div>
             ) : (
               <div className="list">
-                {user &&
-                  user.votes.map(vote =>
-                    participants.map(participant =>
-                      participant._id === vote.participant ? (
-                        <DashboardItem
-                          key={vote._id}
-                          participant={participant}
-                          vote={vote.vote}
-                        />
-                      ) : null
-                    )
-                  )}
+                <div className="list-item">
+                  <div className="item-title">
+                    <h2>Participants</h2>
+                    <YearForm year={showYear} handleChange={handleChange} />
+                  </div>
+                  <div className="item-vote">
+                    <button
+                      onClick={e => toggleSortDown(!sortDown)}
+                      className="btn btn-primary"
+                    >
+                      {sortDown ? (
+                        <span>
+                          Sort <i className="fas fa-arrow-up"></i>
+                        </span>
+                      ) : (
+                        <span>
+                          Sort <i className="fas fa-arrow-down"></i>
+                        </span>
+                      )}
+                    </button>
+                  </div>
+                </div>
+                {user && getUserVotes()}
               </div>
             )}
           </div>
@@ -80,6 +120,7 @@ const Dashboard = ({
 Dashboard.propTypes = {
   loadUser: PropTypes.func.isRequired,
   getParticipants: PropTypes.func.isRequired,
+  setShowYear: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   participants: PropTypes.object.isRequired
 };
@@ -89,6 +130,8 @@ const mapStateToProps = state => ({
   participants: state.participants
 });
 
-export default connect(mapStateToProps, { loadUser, getParticipants })(
-  Dashboard
-);
+export default connect(mapStateToProps, {
+  loadUser,
+  getParticipants,
+  setShowYear
+})(Dashboard);

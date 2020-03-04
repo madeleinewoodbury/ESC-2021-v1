@@ -24,3 +24,4 @@ export const CLEAR_COMPETITION = 'CLEAR_COMPETITION';
 export const REMOVE_COMPETITION = 'REMOVE_COMPETITION';
 export const GET_VOTE = 'GET_VOTE';
 export const VOTE_ERROR = 'VOTE_ERROR';
+export const SET_YEAR = 'SET_YEAR';

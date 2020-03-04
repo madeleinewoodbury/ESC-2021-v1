@@ -3,14 +3,16 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import { getParticipants } from '../../actions/participants';
+import { getParticipants, setShowYear } from '../../actions/participants';
 import ParticipantItem from './ParticipantItem';
+import YearForm from '../utils/YearForm';
 import './Admin.css';
 
 const EditParticipants = ({
   auth: { user, isAuthenticated },
   getParticipants,
-  participants: { participants, loading },
+  setShowYear,
+  participants: { participants, loading, showYear },
   history
 }) => {
   useEffect(() => {
@@ -21,6 +23,10 @@ const EditParticipants = ({
     return <Redirect to="/dashboard" />;
   }
 
+  const handleChange = e => {
+    setShowYear(Number(e.target.value));
+  };
+
   return loading && participants === null ? (
     <Spinner />
   ) : (
@@ -30,6 +36,7 @@ const EditParticipants = ({
         <div className="overlay">
           <div className="container">
             <h1 className="large">Edit Participants</h1>
+
             <div className="btn-container">
               <Link to="/add-participant" className="btn btn-primary">
                 <i className="fas fa-plus-square fa-2x"></i>
@@ -37,13 +44,16 @@ const EditParticipants = ({
             </div>
 
             <div className="list">
-              {participants.map(participant => (
-                <ParticipantItem
-                  key={participant._id}
-                  participant={participant}
-                  history={history}
-                />
-              ))}
+              <YearForm year={showYear} handleChange={handleChange} />
+              {participants.map(participant =>
+                participant.year == showYear ? (
+                  <ParticipantItem
+                    key={participant._id}
+                    participant={participant}
+                    history={history}
+                  />
+                ) : null
+              )}
             </div>
           </div>
         </div>
@@ -55,7 +65,8 @@ const EditParticipants = ({
 EditParticipants.propTypes = {
   auth: PropTypes.object.isRequired,
   participants: PropTypes.object.isRequired,
-  getParticipant: PropTypes.func.isRequired
+  getParticipant: PropTypes.func.isRequired,
+  setShowYear: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -63,4 +74,6 @@ const mapStateToProps = state => ({
   participants: state.participants
 });
 
-export default connect(mapStateToProps, { getParticipants })(EditParticipants);
+export default connect(mapStateToProps, { getParticipants, setShowYear })(
+  EditParticipants
+);
