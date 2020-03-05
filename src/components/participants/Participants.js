@@ -63,9 +63,10 @@ const Participants = ({
               <div className="card-container">
                 {show === 1 &&
                   participants.map(participant =>
+                    // eslint-disable-next-line
                     participant.year == showYear ? (
                       <ParticipantCard
-                        key={participant.id}
+                        key={participant._id}
                         participant={participant}
                       />
                     ) : null
@@ -74,11 +75,12 @@ const Participants = ({
                   participants.map(participant => {
                     if (
                       participant.semifinal === 'First Semifinal' &&
+                      // eslint-disable-next-line
                       participant.year == showYear
                     ) {
                       return (
                         <ParticipantCard
-                          key={participant.id}
+                          key={participant._id}
                           participant={participant}
                         />
                       );
@@ -90,11 +92,12 @@ const Participants = ({
                   participants.map(participant => {
                     if (
                       participant.semifinal === 'Second Semifinal' &&
+                      // eslint-disable-next-line
                       participant.year == showYear
                     ) {
                       return (
                         <ParticipantCard
-                          key={participant.id}
+                          key={participant._id}
                           participant={participant}
                         />
                       );
@@ -104,10 +107,11 @@ const Participants = ({
                   })}
                 {show === 4 &&
                   participants.map(participant => {
+                    // eslint-disable-next-line
                     if (participant.final && participant.year == showYear) {
                       return (
                         <ParticipantCard
-                          key={participant.id}
+                          key={participant._id}
                           participant={participant}
                         />
                       );
@@ -127,7 +131,7 @@ const Participants = ({
 Participants.propTypes = {
   getParticipants: PropTypes.func.isRequired,
   setShowYear: PropTypes.func.isRequired,
-  participants: PropTypes.array.isRequired
+  participants: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   participants: state.participants

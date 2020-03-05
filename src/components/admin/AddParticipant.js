@@ -80,7 +80,9 @@ const AddParticipant = ({
                   >
                     <option value="0">* Select a Country</option>
                     {countries.map(country => (
-                      <option value={country.name}>{country.name}</option>
+                      <option key={country._id} value={country.name}>
+                        {country.name}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -110,7 +112,9 @@ const AddParticipant = ({
                   >
                     <option value={0}>* Select a Year</option>
                     {competitions.map(comp => (
-                      <option value={comp.year}>{comp.year}</option>
+                      <option key={comp._id} value={comp.year}>
+                        {comp.year}
+                      </option>
                     ))}
                   </select>
                 </div>

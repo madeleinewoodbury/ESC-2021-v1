@@ -22,9 +22,13 @@ const ScoreboardItem = ({
         </Link>
       </div>
       <div className="item-vote">
-        <h4>
-          {points} <span>points</span>
-        </h4>
+        {points ? (
+          <h4>
+            {points} <span>points</span>
+          </h4>
+        ) : (
+          <h4>TBA</h4>
+        )}
       </div>
     </div>
   );

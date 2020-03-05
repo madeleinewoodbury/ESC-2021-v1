@@ -38,7 +38,7 @@ const EditCountries = ({
             <div className="list">
               {countries.map(country => (
                 <CountryItem
-                  key={country.id}
+                  key={country._id}
                   name={country.name}
                   flag={country.flag}
                   id={country._id}

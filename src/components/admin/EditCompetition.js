@@ -43,6 +43,7 @@ const EditCompetition = ({
         youtube: loading || !competition.youtube ? '' : competition.youtube
       });
     }
+    // eslint-disable-next-line
   }, [loading, getCountries, getCompetition, match.params.id]);
 
   const handleChange = e =>
@@ -74,7 +75,7 @@ const EditCompetition = ({
         <div className="overlay">
           <div className="container">
             <div className="container-inner">
-              <h1 className="large">Add a New Competition</h1>
+              <h1 className="large">Edit Competition</h1>
               <p>* = required field</p>
               <form className="form" onSubmit={e => handleSubmit(e)}>
                 <div className="form-group">
@@ -85,7 +86,9 @@ const EditCompetition = ({
                   >
                     <option value="0">* Select a Country</option>
                     {countries.map(country => (
-                      <option value={country.name}>{country.name}</option>
+                      <option key={country._id} value={country.name}>
+                        {country.name}
+                      </option>
                     ))}
                   </select>
                 </div>

@@ -39,7 +39,8 @@ const Dashboard = ({
 
     let userVotes = user.votes.map(vote =>
       participants.map(participant =>
-        participant.year == showYear && participant._id === vote.participant ? (
+        // eslint-disable-next-line
+        participant.year == showYear && participant._id == vote.participant ? (
           <DashboardItem
             key={vote._id}
             participant={participant}

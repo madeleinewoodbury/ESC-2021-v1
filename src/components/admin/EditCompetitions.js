@@ -38,7 +38,7 @@ const EditCompetitions = ({
             <div className="list">
               {competitions.map(competition => (
                 <CompetitionItem
-                  key={competition.id}
+                  key={competition._id}
                   logo={competition.logo}
                   host={competition.host}
                   year={competition.year}

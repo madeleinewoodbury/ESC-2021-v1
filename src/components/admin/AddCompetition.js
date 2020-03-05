@@ -68,7 +68,9 @@ const AddCompetition = ({
                   >
                     <option value="0">* Select a Country</option>
                     {countries.map(country => (
-                      <option value={country.name}>{country.name}</option>
+                      <option key={country._id} value={country.name}>
+                        {country.name}
+                      </option>
                     ))}
                   </select>
                 </div>

@@ -68,6 +68,7 @@ const App = () => {
               path="/competitions/:id"
               component={CompetitionPostcard}
             />
+            <Route exact path="/scoreboard/:year" component={Scoreboard} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute
               exact
@@ -109,11 +110,6 @@ const App = () => {
               exact
               path="/edit-competition/:id"
               component={EditCompetition}
-            />
-            <PrivateRoute
-              exact
-              path="/scoreboard/:year"
-              component={Scoreboard}
             />
           </Switch>
         </Fragment>

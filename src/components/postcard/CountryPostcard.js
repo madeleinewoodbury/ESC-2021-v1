@@ -54,14 +54,14 @@ const CountryPostcard = ({
                   </div>
                   <div className="postcard-list">
                     <h3>Victories</h3>
-                    {country.victories.map(victory => (
-                      <span>{victory}</span>
+                    {country.victories.map((victory, idx) => (
+                      <span key={idx}>{victory}</span>
                     ))}
                   </div>
                   <div className="postcard-list">
                     <h3>Hosts</h3>
-                    {country.hosts.map(host => (
-                      <span>{host}</span>
+                    {country.hosts.map((host, idx) => (
+                      <span key={idx}>{host}</span>
                     ))}
                   </div>
                 </div>

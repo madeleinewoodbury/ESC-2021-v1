@@ -27,11 +27,11 @@ const CompetitionItem = ({
           onClick={e => deleteCompetition(id, history)}
           className="btn btn-danger"
         >
-          <i class="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"></i>
           <span className="hide-sm"> Delete</span>
         </button>
         <Link to={`/edit-competition/${id}`} className="btn btn-secondary">
-          <i class="far fa-edit"></i>
+          <i className="far fa-edit"></i>
           <span className="hide-sm"> Edit</span>
         </Link>
       </div>

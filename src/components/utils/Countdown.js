@@ -26,7 +26,7 @@ const Countdown = ({ timeTillDate, isAuthenticated }) => {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [timeTillDate]);
 
   const { days, hours, minutes, seconds } = timeLeft;
 

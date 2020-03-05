@@ -5,9 +5,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT,
-  GET_VOTE,
-  VOTE_ERROR
+  LOGOUT
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 import { setAlert } from './alert';

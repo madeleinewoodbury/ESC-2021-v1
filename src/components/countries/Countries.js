@@ -44,7 +44,7 @@ const Countries = ({ getCountries, countries: { countries, loading } }) => {
 
 Countries.propTypes = {
   getCountries: PropTypes.func.isRequired,
-  countries: PropTypes.array.isRequired
+  countries: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   countries: state.countries

@@ -19,7 +19,9 @@ const YearForm = ({
         <select name="showYear" value={year} onChange={e => handleChange(e)}>
           {competitions &&
             competitions.map(comp => (
-              <option value={comp.year}>{comp.year}</option>
+              <option key={comp._id} value={comp.year}>
+                {comp.year}
+              </option>
             ))}
         </select>
       </div>

@@ -46,6 +46,7 @@ const EditParticipants = ({
             <div className="list">
               <YearForm year={showYear} handleChange={handleChange} />
               {participants.map(participant =>
+                // eslint-disable-next-line
                 participant.year == showYear ? (
                   <ParticipantItem
                     key={participant._id}
@@ -65,7 +66,7 @@ const EditParticipants = ({
 EditParticipants.propTypes = {
   auth: PropTypes.object.isRequired,
   participants: PropTypes.object.isRequired,
-  getParticipant: PropTypes.func.isRequired,
+  getParticipants: PropTypes.func.isRequired,
   setShowYear: PropTypes.func.isRequired
 };
 

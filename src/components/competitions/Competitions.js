@@ -45,7 +45,7 @@ const Competitions = ({
 
 Competitions.propTypes = {
   getCompetitions: PropTypes.func.isRequired,
-  competitions: PropTypes.array.isRequired
+  competitions: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   competitions: state.competitions

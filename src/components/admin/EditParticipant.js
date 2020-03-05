@@ -59,6 +59,7 @@ const EditParticipant = ({
         points: loading || !participant.points ? '' : participant.points
       });
     }
+    // eslint-disable-next-line
   }, [loading, getCountries, getCompetitions, getParticipant, match.params.id]);
 
   const handleChange = e =>
@@ -94,7 +95,7 @@ const EditParticipant = ({
         <div className="overlay">
           <div className="container">
             <div className="container-inner">
-              <h1 className="large">Add a New Particpant</h1>
+              <h1 className="large">Edit Particpant</h1>
               <p>* = required field</p>
               <form className="form" onSubmit={e => handleSubmit(e)}>
                 <div className="form-group">
@@ -105,7 +106,9 @@ const EditParticipant = ({
                   >
                     <option value="0">* Select a Country</option>
                     {countries.map(country => (
-                      <option value={country.name}>{country.name}</option>
+                      <option key={country._id} value={country.name}>
+                        {country.name}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -135,7 +138,9 @@ const EditParticipant = ({
                   >
                     <option value={0}>* Select a Year</option>
                     {competitions.map(comp => (
-                      <option value={comp.year}>{comp.year}</option>
+                      <option key={comp._id} value={comp.year}>
+                        {comp.year}
+                      </option>
                     ))}
                   </select>
                 </div>
