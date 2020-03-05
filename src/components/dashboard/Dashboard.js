@@ -97,11 +97,13 @@ const Dashboard = ({
                     >
                       {sortDown ? (
                         <span>
-                          Sort <i className="fas fa-arrow-up"></i>
+                          <span className="hide-xs">Sort</span>{' '}
+                          <i className="fas fa-arrow-up"></i>
                         </span>
                       ) : (
                         <span>
-                          Sort <i className="fas fa-arrow-down"></i>
+                          <span className="hide-xs">Sort</span>{' '}
+                          <i className="fas fa-arrow-down"></i>
                         </span>
                       )}
                     </button>

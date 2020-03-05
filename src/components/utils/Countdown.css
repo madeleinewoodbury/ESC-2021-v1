@@ -28,3 +28,11 @@
   text-align: center;
   font-size: 2rem;
 }
+
+.countdown p a {
+  margin-right: 0.2rem;
+}
+
+.countdown p a:hover {
+  color: var(--secondary-color);
+}

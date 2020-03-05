@@ -13,7 +13,7 @@ const ScoreboardItem = ({
           </h4>
         </Link>
         <Link to={`/participants/${_id}`}>
-          <h4 className="artist">
+          <h4 className="artist hide-xs">
             {artist}{' '}
             <span className="hide-sm">
               <em>"{song}"</em>

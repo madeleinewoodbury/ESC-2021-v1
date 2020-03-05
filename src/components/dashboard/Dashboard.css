@@ -94,6 +94,10 @@
     width: 100%;
   }
 
+  .dashboard .container .list .list-item .item-title:first-of-type h2 {
+    margin-left: 2rem;
+  }
+
   .dashboard .container .list .list-item {
     width: 100%;
     margin: 0;
@@ -122,5 +126,20 @@
 
   .dashboard .container .btn-container .btn:first-of-type {
     margin-bottom: 0.5rem;
+  }
+
+  .dashboard .container .list .list-item .item-title:first-of-type h2 {
+    font-size: 1.5rem;
+  }
+
+  .dashboard .container .list .list-item .item-info h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .dashboard .container .list .list-item .item-vote,
+  .dashboard .container .list .list-item .item-vote h4 span {
+    font-size: 0.9rem;
   }
 }

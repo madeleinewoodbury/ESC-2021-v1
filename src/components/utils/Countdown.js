@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Countdown.css';
 
-const Countdown = ({ timeTillDate }) => {
+const Countdown = ({ timeTillDate, isAuthenticated }) => {
   const [timeLeft, setTimeLeft] = useState({});
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -50,6 +50,14 @@ const Countdown = ({ timeTillDate }) => {
       <Link to="/participants" className="btn btn-secondary">
         View All Participants
       </Link>
+      {!isAuthenticated && (
+        <p>
+          <Link to="/login" className="text-primary sing-in">
+            Sign in{' '}
+          </Link>{' '}
+          to give your votes
+        </p>
+      )}
     </div>
   );
 };

@@ -9,6 +9,8 @@ import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
+import About from './components/info/About';
+import History from './components/info/History';
 import Dashboard from './components/dashboard/Dashboard';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
@@ -48,6 +50,8 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Alert />
           <Switch>
+            <Route exact path="/about" component={About} />
+            <Route exact path="/history" component={History} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/participants" component={Participants} />

@@ -269,7 +269,17 @@ button {
 }
 
 @media screen and (max-width: 650px) {
+  .lead {
+    font-size: 1.5rem;
+  }
+
   .hide-sm {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .hide-xs {
     display: none;
   }
 }

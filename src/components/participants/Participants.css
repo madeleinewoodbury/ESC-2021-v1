@@ -31,6 +31,14 @@
   width: 25%;
 }
 
+.participants .card .card-img .img-link {
+  transition: all ease-in 0.4s;
+}
+
+.participants .card .card-img .img-link:hover {
+  filter: brightness(1.2);
+}
+
 .participants .card .card-img img {
   width: 100%;
 }

@@ -114,6 +114,10 @@
     border-radius: 0;
   }
 
+  .competitions .card {
+    width: 50%;
+  }
+
   .participants .card {
     width: 50%;
   }
@@ -122,5 +126,17 @@
 @media screen and (max-width: 500px) {
   .participants .card {
     width: 100%;
+  }
+
+  .competitions .card .card-content .card-pill {
+    left: 10px;
+  }
+
+  .competitions .card .card-content .card-pill a {
+    font-size: 0.8rem;
+  }
+
+  .competitions .card .card-content .card-info a {
+    font-size: 1.2rem;
   }
 }

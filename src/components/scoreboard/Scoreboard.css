@@ -81,6 +81,10 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .scoreboard .container .list .list-item .item-title:first-of-type h2 {
+    margin-left: 2rem;
+  }
+
   .scoreboard .container .list {
     width: 100%;
   }
@@ -105,5 +109,19 @@
 @media screen and (max-width: 650px) {
   .scoreboard .container h1 {
     font-size: 2rem;
+  }
+
+  .scoreboard .container .list .list-item .item-title:first-of-type h2 {
+    font-size: 1.5rem;
+  }
+
+  .scoreboard .container .list .list-item .item-info h4 {
+    color: #fff;
+    font-size: 1rem;
+  }
+
+  .scoreboard .container .list .list-item .item-vote,
+  .scoreboard .container .list .list-item .item-vote h4 span {
+    font-size: 0.9rem;
   }
 }

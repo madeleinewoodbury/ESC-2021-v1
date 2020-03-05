@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Countdown from '../utils/Countdown';
 
-const Landing = () => {
+const Landing = ({ isAuthenticated }) => {
   return (
     <div className="landing background">
       <div className="banner"></div>
@@ -12,6 +12,7 @@ const Landing = () => {
           <div className="container">
             <Countdown
               timeTillDate={new Date('May 16, 2020 14:00:00').getTime()}
+              isAuthenticated={isAuthenticated}
             />
           </div>
         </div>

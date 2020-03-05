@@ -6,7 +6,9 @@ const ParticipantCard = ({ participant }) => {
   return (
     <div className="card">
       <div className="card-img">
-        <img src={image} alt={artist} />
+        <Link to={`/participants/${_id}`} className="img-link">
+          <img src={image} alt={artist} />
+        </Link>
       </div>
       <div className="card-content">
         <div className="card-pill">

@@ -4,12 +4,10 @@ import logo from '../../logo-white.png';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 import PropTypes from 'prop-types';
-import YearForm from '../utils/YearForm';
 import './Navbar.css';
 
 const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
   const [viewMenu, toggleViewMenu] = useState(false);
-  const [showYear, setShowYear] = useState(2020);
 
   const handleLogout = e => {
     window.innerWidth < 1024 && toggleViewMenu(!viewMenu);
@@ -95,8 +93,13 @@ const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
               </Link>
             </li>
             <li>
-              <Link onClick={e => handleClick(e)} to="#">
+              <Link onClick={e => handleClick(e)} to="/about">
                 About
+              </Link>
+            </li>
+            <li>
+              <Link onClick={e => handleClick(e)} to="/history">
+                History
               </Link>
             </li>
           </ul>
