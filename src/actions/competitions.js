@@ -14,7 +14,7 @@ export const getCompetitions = () => async dispatch => {
     type: CLEAR_COMPETITION
   });
   try {
-    const res = await axios.get('/api/competitions');
+    const res = await axios.get('https://esc-2020.online/api/competitions');
     dispatch({
       type: GET_COMPETITIONS,
       payload: res.data
@@ -30,7 +30,9 @@ export const getCompetitions = () => async dispatch => {
 // Get competition by id
 export const getCompetition = id => async dispatch => {
   try {
-    const res = await axios.get(`/api/competitions/${id}`);
+    const res = await axios.get(
+      `https://esc-2020.online/api/competitions/${id}`
+    );
     dispatch({
       type: GET_COMPETITION,
       payload: res.data
@@ -51,7 +53,11 @@ export const addCompetition = (formData, history) => async dispatch => {
         'Content-Type': 'application/json'
       }
     };
-    const res = await axios.post('/api/competitions', formData, config);
+    const res = await axios.post(
+      'https://esc-2020.online/api/competitions',
+      formData,
+      config
+    );
 
     dispatch({
       type: GET_COMPETITION,
@@ -80,7 +86,11 @@ export const updateCompetition = (id, formData, history) => async dispatch => {
         'Content-Type': 'application/json'
       }
     };
-    const res = await axios.put(`/api/competitions/${id}`, formData, config);
+    const res = await axios.put(
+      `https://esc-2020.online/api/competitions/${id}`,
+      formData,
+      config
+    );
 
     dispatch({
       type: GET_COMPETITION,
@@ -107,7 +117,7 @@ export const updateCompetition = (id, formData, history) => async dispatch => {
 export const deleteCompetition = (id, history) => async dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
-      await axios.delete(`/api/competitions/${id}`);
+      await axios.delete(`https://esc-2020.online/api/competitions/${id}`);
 
       dispatch({
         type: REMOVE_COMPETITION

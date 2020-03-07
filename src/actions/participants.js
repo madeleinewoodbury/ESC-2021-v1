@@ -17,7 +17,7 @@ export const getParticipants = () => async dispatch => {
     type: CLEAR_PARTICIPANT
   });
   try {
-    const res = await axios.get('/api/participants');
+    const res = await axios.get('https://esc-2020.online/api/participants');
     dispatch({
       type: GET_PARTICIPANTS,
       payload: res.data
@@ -33,7 +33,9 @@ export const getParticipants = () => async dispatch => {
 // Get participant by id
 export const getParticipant = id => async dispatch => {
   try {
-    const res = await axios.get(`/api/participants/${id}`);
+    const res = await axios.get(
+      `https://esc-2020.online/api/participants/${id}`
+    );
 
     dispatch({
       type: GET_PARTICIPANT,
@@ -55,7 +57,11 @@ export const addParticipant = (formData, history) => async dispatch => {
         'Content-Type': 'application/json'
       }
     };
-    const res = await axios.post('/api/participants', formData, config);
+    const res = await axios.post(
+      'https://esc-2020.online/api/participants',
+      formData,
+      config
+    );
     dispatch({
       type: GET_PARTICIPANT,
       payload: res.data
@@ -83,7 +89,11 @@ export const updateParticipant = (id, formData, history) => async dispatch => {
         'Content-Type': 'application/json'
       }
     };
-    const res = await axios.put(`/api/participants/${id}`, formData, config);
+    const res = await axios.put(
+      `https://esc-2020.online/api/participants/${id}`,
+      formData,
+      config
+    );
 
     dispatch({
       type: GET_PARTICIPANT,
@@ -110,7 +120,7 @@ export const updateParticipant = (id, formData, history) => async dispatch => {
 export const deleteParticipant = (id, history) => async dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
-      await axios.delete(`/api/participants/${id}`);
+      await axios.delete(`https://esc-2020.online/api/participants/${id}`);
       dispatch({
         type: REMOVE_PARTICIPANT
       });
@@ -131,7 +141,9 @@ export const deleteParticipant = (id, history) => async dispatch => {
 // Get participant by year
 export const getParticipantsByYear = year => async dispatch => {
   try {
-    const res = await axios.get(`/api/participants/year/${year}`);
+    const res = await axios.get(
+      `https://esc-2020.online/api/participants/year/${year}`
+    );
 
     dispatch({
       type: GET_PARTICIPANTS,
@@ -148,7 +160,9 @@ export const getParticipantsByYear = year => async dispatch => {
 // Vote on participant
 export const voteOnParticipant = (id, vote) => async dispatch => {
   try {
-    const res = await axios.post(`/api/participants/vote/${id}/${vote}`);
+    const res = await axios.post(
+      `https://esc-2020.online/api/participants/vote/${id}/${vote}`
+    );
     dispatch({
       type: GET_VOTE,
       payload: res.data

@@ -14,7 +14,7 @@ export const getCountries = () => async dispatch => {
     type: CLEAR_COUNTRY
   });
   try {
-    const res = await axios.get('/api/countries');
+    const res = await axios.get('https://esc-2020.online/api/countries');
     dispatch({
       type: GET_COUNTRIES,
       payload: res.data
@@ -30,7 +30,7 @@ export const getCountries = () => async dispatch => {
 // Get country by name
 export const getCountry = id => async dispatch => {
   try {
-    const res = await axios.get(`/api/countries/${id}`);
+    const res = await axios.get(`https://esc-2020.online/api/countries/${id}`);
     dispatch({
       type: GET_COUNTRY,
       payload: res.data
@@ -51,7 +51,11 @@ export const addCountry = (formData, history) => async dispatch => {
         'Content-Type': 'application/json'
       }
     };
-    const res = await axios.post('/api/countries', formData, config);
+    const res = await axios.post(
+      'https://esc-2020.online/api/countries',
+      formData,
+      config
+    );
 
     dispatch({
       type: GET_COUNTRY,
@@ -80,7 +84,11 @@ export const updateCountry = (id, formData, history) => async dispatch => {
         'Content-Type': 'application/json'
       }
     };
-    const res = await axios.put(`/api/countries/${id}`, formData, config);
+    const res = await axios.put(
+      `https://esc-2020.online/api/countries/${id}`,
+      formData,
+      config
+    );
 
     dispatch({
       type: GET_COUNTRY,
@@ -107,7 +115,7 @@ export const updateCountry = (id, formData, history) => async dispatch => {
 export const deleteCountry = (id, history) => async dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
-      await axios.delete(`/api/countries/${id}`);
+      await axios.delete(`https://esc-2020.online/api/countries/${id}`);
 
       dispatch({
         type: REMOVE_COUNTRY
