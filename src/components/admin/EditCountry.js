@@ -27,7 +27,7 @@ const EditCountry = ({
   });
 
   useEffect(() => {
-    getCountry(match.params.id);
+    country === null && getCountry(match.params.id);
     if (country !== null) {
       setFormData({
         name: loading || !country.name ? '' : country.name,

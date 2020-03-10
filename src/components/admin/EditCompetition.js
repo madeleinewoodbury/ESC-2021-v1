@@ -28,8 +28,9 @@ const EditCompetition = ({
   });
 
   useEffect(() => {
-    getCountries();
-    getCompetition(match.params.id);
+    countries === [] && getCountries();
+    competition === null && getCompetition(match.params.id);
+
     if (competition !== null) {
       setFormData({
         country: loading || !competition.country ? '' : competition.country,
@@ -44,7 +45,7 @@ const EditCompetition = ({
       });
     }
     // eslint-disable-next-line
-  }, [loading, getCountries, getCompetition, match.params.id]);
+  }, [loading, getCountries, getCompetition, match.params.id, competition]);
 
   const handleChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

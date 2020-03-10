@@ -31,6 +31,7 @@ import EditCountry from './components/admin/EditCountry';
 import EditParticipant from './components/admin/EditParticipant';
 import EditCompetition from './components/admin/EditCompetition';
 import Scoreboard from './components/scoreboard/Scoreboard';
+import NotFound from './components/layout/NotFound';
 import './App.css';
 
 if (localStorage.token) {
@@ -111,6 +112,7 @@ const App = () => {
               path="/edit-competition/:id"
               component={EditCompetition}
             />
+            <Route component={NotFound} />
           </Switch>
         </Fragment>
       </Router>

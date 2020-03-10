@@ -35,9 +35,9 @@ const EditParticipant = ({
   });
 
   useEffect(() => {
-    getCountries();
-    getCompetitions();
-    getParticipant(match.params.id);
+    countries.lenght !== [] && getCountries();
+    competitions.lenght !== [] && getCompetitions();
+    participant === null && getParticipant(match.params.id);
 
     if (participant !== null) {
       setFormData({
@@ -60,7 +60,14 @@ const EditParticipant = ({
       });
     }
     // eslint-disable-next-line
-  }, [loading, getCountries, getCompetitions, getParticipant, match.params.id]);
+  }, [
+    loading,
+    getCountries,
+    getCompetitions,
+    getParticipant,
+    match.params.id,
+    participant
+  ]);
 
   const handleChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
