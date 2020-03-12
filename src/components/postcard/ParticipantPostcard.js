@@ -11,12 +11,13 @@ const ParticipantPostcard = ({
   voteOnParticipant,
   participants: { participant, loading },
   auth: { isAuthenticated, user },
-  match
+  match,
+  history
 }) => {
   const [formData, setFormData] = useState('');
 
   useEffect(() => {
-    getParticipant(match.params.id);
+    getParticipant(match.params.id, history);
     if (user !== null) {
       const userVote = user.votes.find(
         vote => vote.participant === match.params.id
@@ -25,7 +26,7 @@ const ParticipantPostcard = ({
         setFormData(userVote.vote);
       }
     }
-  }, [getParticipant, match.params.id, user]);
+  }, [getParticipant, match.params.id, user, history]);
 
   const handleSubmit = e => {
     e.preventDefault();

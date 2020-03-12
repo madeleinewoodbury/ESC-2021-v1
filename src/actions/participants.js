@@ -31,7 +31,7 @@ export const getParticipants = () => async dispatch => {
 };
 
 // Get participant by id
-export const getParticipant = id => async dispatch => {
+export const getParticipant = (id, history) => async dispatch => {
   try {
     const res = await axios.get(
       `https://esc-2020.online/api/participants/${id}`
@@ -46,6 +46,7 @@ export const getParticipant = id => async dispatch => {
       type: PARTICIPANT_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
+    history.push('/not-found');
   }
 };
 

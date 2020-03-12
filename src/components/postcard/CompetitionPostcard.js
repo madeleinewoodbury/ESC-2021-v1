@@ -9,11 +9,12 @@ import './Postcard.css';
 const CountryPostcard = ({
   getCompetition,
   competitions: { competition, loading },
-  match
+  match,
+  history
 }) => {
   useEffect(() => {
-    getCompetition(match.params.id);
-  }, [getCompetition, match.params.id]);
+    getCompetition(match.params.id, history);
+  }, [getCompetition, match.params.id, history]);
 
   return (
     <Fragment>

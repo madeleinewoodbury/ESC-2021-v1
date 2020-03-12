@@ -28,7 +28,7 @@ export const getCompetitions = () => async dispatch => {
 };
 
 // Get competition by id
-export const getCompetition = id => async dispatch => {
+export const getCompetition = (id, history) => async dispatch => {
   try {
     const res = await axios.get(
       `https://esc-2020.online/api/competitions/${id}`
@@ -42,6 +42,7 @@ export const getCompetition = id => async dispatch => {
       type: COMPETITION_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
+    history.push('/not-found');
   }
 };
 

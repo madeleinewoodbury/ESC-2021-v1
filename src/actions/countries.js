@@ -28,7 +28,7 @@ export const getCountries = () => async dispatch => {
 };
 
 // Get country by name
-export const getCountry = id => async dispatch => {
+export const getCountry = (id, history) => async dispatch => {
   try {
     const res = await axios.get(`https://esc-2020.online/api/countries/${id}`);
     dispatch({
@@ -40,6 +40,7 @@ export const getCountry = id => async dispatch => {
       type: COUNTRY_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
+    history.push('/not-found');
   }
 };
 

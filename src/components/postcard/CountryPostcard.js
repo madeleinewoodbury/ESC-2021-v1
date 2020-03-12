@@ -8,11 +8,12 @@ import './Postcard.css';
 const CountryPostcard = ({
   getCountry,
   countries: { country, loading },
-  match
+  match,
+  history
 }) => {
   useEffect(() => {
-    getCountry(match.params.id);
-  }, [getCountry, match.params.id]);
+    getCountry(match.params.id, history);
+  }, [getCountry, match.params.id, history]);
 
   return (
     <Fragment>

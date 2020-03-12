@@ -36,3 +36,9 @@
 .countdown p a:hover {
   color: var(--secondary-color);
 }
+
+@media screen and (max-width: 400px) {
+  .countdown .countdown-timers .timer span:first-of-type {
+    font-size: 3rem;
+  }
+}
