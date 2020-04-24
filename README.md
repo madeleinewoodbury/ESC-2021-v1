@@ -4,4 +4,4 @@ An application where users can view the participants of the Eurovision Song Cont
 
 ## [Visit the site](http://www.esc-2020.site)
 
-#### [API repo](https://github.com/madeleinewoodbury/esc-2020-api)
+#### [esc-2020-api](https://github.com/madeleinewoodbury/esc-2020-api)
