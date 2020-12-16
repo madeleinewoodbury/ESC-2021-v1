@@ -3,133 +3,136 @@ import {
   GET_COUNTRIES,
   COUNTRY_ERROR,
   CLEAR_COUNTRY,
-  REMOVE_COUNTRY
-} from './types';
-import axios from 'axios';
-import { setAlert } from './alert';
+  REMOVE_COUNTRY,
+} from './types'
+import axios from 'axios'
+import { setAlert } from './alert'
 
 // Get all countries
-export const getCountries = () => async dispatch => {
+export const getCountries = () => async (dispatch) => {
   dispatch({
-    type: CLEAR_COUNTRY
-  });
+    type: CLEAR_COUNTRY,
+  })
   try {
-    const res = await axios.get('https://esc-2020.online/api/countries');
+    const res = await axios.get('http://localhost:5000/api/v1/countries')
     dispatch({
       type: GET_COUNTRIES,
-      payload: res.data
-    });
+      payload: res.data.data,
+    })
   } catch (err) {
     dispatch({
       type: COUNTRY_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+      // payload: { msg: err.response.statusText, status: err.response.status },
+      payload: { msg: 'Something went wrong', status: 400 },
+    })
   }
-};
+}
 
-// Get country by name
-export const getCountry = (id, history) => async dispatch => {
+// Get country by id
+export const getCountry = (id, history) => async (dispatch) => {
   try {
-    const res = await axios.get(`https://esc-2020.online/api/countries/${id}`);
+    const res = await axios.get(`http://localhost:5000/api/v1/countries/${id}`)
+    console.log(res.data.data)
     dispatch({
       type: GET_COUNTRY,
-      payload: res.data
-    });
+      payload: res.data.data,
+    })
   } catch (err) {
     dispatch({
       type: COUNTRY_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
-    history.push('/not-found');
+      // payload: { msg: err.response.statusText, status: err.response.status },
+      payload: { msg: 'Something went wrong', status: 400 },
+    })
+    history.push('/not-found')
   }
-};
+}
 
 // Add a new country
-export const addCountry = (formData, history) => async dispatch => {
+export const addCountry = (formData, history) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
-    };
+        'Content-Type': 'application/json',
+      },
+    }
     const res = await axios.post(
       'https://esc-2020.online/api/countries',
       formData,
       config
-    );
+    )
 
     dispatch({
       type: GET_COUNTRY,
-      payload: res.data
-    });
-    dispatch(setAlert('Country Added', 'success'));
-    history.push('/edit-countries');
+      payload: res.data,
+    })
+    dispatch(setAlert('Country Added', 'success'))
+    history.push('/edit-countries')
   } catch (err) {
-    const errors = err.response.data.errors;
+    const errors = err.response.data.errors
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')))
     }
     dispatch({
       type: COUNTRY_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+      payload: { msg: err.response.statusText, status: err.response.status },
+    })
   }
-};
+}
 
 // Update a country
-export const updateCountry = (id, formData, history) => async dispatch => {
+export const updateCountry = (id, formData, history) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
-    };
+        'Content-Type': 'application/json',
+      },
+    }
     const res = await axios.put(
       `https://esc-2020.online/api/countries/${id}`,
       formData,
       config
-    );
+    )
 
     dispatch({
       type: GET_COUNTRY,
-      payload: res.data
-    });
-    dispatch(setAlert('Country Updated', 'success'));
+      payload: res.data,
+    })
+    dispatch(setAlert('Country Updated', 'success'))
 
     // Redirect back to dashboard
-    history.push('/edit-countries');
+    history.push('/edit-countries')
   } catch (err) {
-    const errors = err.response.data.errors;
+    const errors = err.response.data.errors
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')))
     }
     dispatch({
       type: COUNTRY_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+      payload: { msg: err.response.statusText, status: err.response.status },
+    })
   }
-};
+}
 
 // Delete country
-export const deleteCountry = (id, history) => async dispatch => {
+export const deleteCountry = (id, history) => async (dispatch) => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
-      await axios.delete(`https://esc-2020.online/api/countries/${id}`);
+      await axios.delete(`https://esc-2020.online/api/countries/${id}`)
 
       dispatch({
-        type: REMOVE_COUNTRY
-      });
-      dispatch(setAlert('Country deleted', 'success'));
+        type: REMOVE_COUNTRY,
+      })
+      dispatch(setAlert('Country deleted', 'success'))
       // Redirect back to dashboard
-      history.push('/edit-countries');
+      history.push('/edit-countries')
     } catch (err) {
-      console.log(err);
+      console.log(err)
       dispatch({
         type: COUNTRY_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status }
-      });
+        payload: { msg: err.response.statusText, status: err.response.status },
+      })
     }
   }
-};
+}

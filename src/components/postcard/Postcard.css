@@ -140,7 +140,7 @@
   color: black;
 }
 
-.postcard .postcard-content .postcard-bio .intro {
+.postcard .postcard-content .postcard-bio p:first-of-type {
   font-weight: bold;
 }
 
